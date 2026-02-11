@@ -130,7 +130,7 @@ function Services() {
                 'Expert folding & packing',
                 'Same day service available',
               ],
-              image: '/image/service-laundry.jpg',
+              image: '/image/1.jpg',
               icon: FaLaundry,
             },
             {
@@ -142,7 +142,7 @@ function Services() {
                 'Delicate fabric care',
                 'Perfect finishing',
               ],
-              image: '/image/service-dryclean.jpg',
+              image: '/image/2.jpg',
               icon: FaTshirt,
             },
             {
@@ -154,7 +154,7 @@ function Services() {
                 'All fabric types',
                 'Fast turnaround',
               ],
-              image: '/image/service-press.jpg',
+              image: '/image/3.jpg',
               icon: FaFire,
             },
             {
@@ -166,7 +166,7 @@ function Services() {
                 'Baby clothing friendly',
                 'Odour removal',
               ],
-              image: '/image/service-sanitize.jpg',
+              image: '/image/4.jpg',
               icon: FaHandSparkles,
             },
             {
@@ -178,7 +178,7 @@ function Services() {
                 'Luxury packaging',
                 'Extra attention',
               ],
-              image: '/image/service-special.jpg',
+              image: '/image/5.jpg',
               icon: FaGem,
             },
             {
@@ -190,7 +190,7 @@ function Services() {
                 'Sofa covers included',
                 'Expert handling',
               ],
-              image: '/image/service-curtain.jpg',
+              image: '/image/6.jpg',
               icon: FaCouch,
             },
           ].map((service, index) => {
@@ -381,32 +381,32 @@ function Services() {
               {
                 name: 'Chennai - Head Office',
                 address: 'T. Nagar, Chennai - 600017',
-                image: '/images/branches/chennai.jpg',
+                image: '/image/location.webp',
               },
               {
                 name: 'Velachery',
                 address: 'Velachery Main Road',
-                image: '/images/branches/velachery.jpg',
+                image: '/image/location.webp',
               },
               {
                 name: 'Anna Nagar',
                 address: '2nd Avenue, Anna Nagar',
-                image: '/images/branches/annanagar.jpg',
+                image: '/image/location.webp',
               },
               {
                 name: 'Tambaram',
                 address: 'GST Road, Tambaram',
-                image: '/images/branches/tambaram.jpg',
+                image: '/image/location.webp',
               },
               {
                 name: 'OMR',
                 address: 'Sholinganallur, OMR',
-                image: '/images/branches/omr.jpg',
+                image: '/image/location.webp',
               },
               {
                 name: 'Porur',
                 address: 'Mount Poonamallee Road',
-                image: '/images/branches/porur.jpg',
+                image: '/image/location.webp',
               },
             ].map((branch, index) => (
               <motion.div
