@@ -1,55 +1,29 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import {
   FaTshirt,
   FaFire,
   FaHandSparkles,
   FaCouch,
   FaGem,
-  FaTshirt as FaLaundry,
+  FaCrown,
 } from 'react-icons/fa'
-import { motion } from 'framer-motion'
-import ServiceCard from '../components/ServiceCard'
+import { motion, AnimatePresence } from 'framer-motion'
 import CTASection from '../components/CTASection'
+import servicesData from '../data/servicesData.json'
+
+const iconMap = {
+  FaTshirt,
+  FaFire,
+  FaHandSparkles,
+  FaCouch,
+  FaGem,
+  FaCrown,
+}
 
 function Services() {
-  const allServices = [
-    {
-      icon: FaTshirt,
-      title: 'Dry Cleaning',
-      description:
-        'Fabric-safe dry cleaning with expert stain removal for formal and delicate garments. Perfect for suits, dresses, and specialty fabrics.',
-    },
-    {
-      icon: FaLaundry,
-      title: 'Laundry',
-      description:
-        'Premium wash, dry & fold using quality detergents for everyday comfort. Ideal for casual wear, bed linens, and towels.',
-    },
-    {
-      icon: FaFire,
-      title: 'Steam Press',
-      description:
-        'Sharp, wrinkle-free ironing for shirts, suits, and daily wear. Professional pressing for a crisp, polished look.',
-    },
-    {
-      icon: FaHandSparkles,
-      title: 'Sanitize Wash',
-      description:
-        'Hygienic wash ideal for kids, elders, and sensitive skin. Extra sanitization for peace of mind.',
-    },
-    {
-      icon: FaGem,
-      title: 'Special Care',
-      description:
-        'Hand wash & luxury care for designer and delicate clothing. Expert handling for high-end garments.',
-    },
-    {
-      icon: FaCouch,
-      title: 'Curtain Wash',
-      description:
-        'Deep cleaning for curtains, sofa covers, and heavy fabrics. Professional cleaning for home textiles.',
-    },
-  ]
+  const [activeTab, setActiveTab] = useState('services') // 'services' | 'exclusive'
+
+  const currentServices = activeTab === 'services' ? servicesData.services : servicesData.exclusiveServices
 
   const pricing = [
     { item: 'Shirt', price: '$3.50', itemType: 'Standard', note: 'Professional service included' },
@@ -72,7 +46,7 @@ function Services() {
             className="w-full h-full object-cover object-center"
           />
           {/* Brand Color Overlay Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#00A1E4]/80 via-[#3EC4ED]/70 to-[#E4F4F9]/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/30 to-black/30"></div>
           {/* Dark Overlay for Text Readability */}
           <div className="absolute inset-0 bg-black/40 sm:bg-black/30 md:bg-black/20"></div>
         </div>
@@ -116,164 +90,124 @@ function Services() {
         </div>
       </section>
 
-      {/* ================= SERVICES DETAIL SECTION ================= */}
+      {/* ================= TAB BUTTONS ================= */}
+      <section className="relative -mt-4 sm:-mt-6 z-20">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 flex justify-center">
+          <div className="flex bg-white rounded-full shadow-xl p-1.5 sm:p-2 border border-gray-100">
+            <button
+              onClick={() => setActiveTab('services')}
+              className={`px-6 sm:px-8 md:px-10 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 ${
+                activeTab === 'services'
+                  ? 'bg-gradient-to-r from-[#00A1E4] to-[#3EC4ED] text-white shadow-lg'
+                  : 'text-gray-600 hover:text-[#00A1E4] hover:bg-gray-50'
+              }`}
+            >
+              Services
+            </button>
+            <button
+              onClick={() => setActiveTab('exclusive')}
+              className={`px-6 sm:px-8 md:px-10 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 ${
+                activeTab === 'exclusive'
+                  ? 'bg-gradient-to-r from-[#00A1E4] to-[#3EC4ED] text-white shadow-lg'
+                  : 'text-gray-600 hover:text-[#00A1E4] hover:bg-gray-50'
+              }`}
+            >
+              Exclusive Services
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= SERVICES DETAIL SECTION (Alternating Image + Text) ================= */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
-          {/* Services with Alternating Layout */}
-          {[
-            {
-              title: 'Laundry',
-              description: 'Professional machine wash, dry & fold',
-              features: [
-                'Premium detergent wash',
-                'Fabric-safe drying',
-                'Expert folding & packing',
-                'Same day service available',
-              ],
-              image: '/image/1.jpg',
-              icon: FaLaundry,
-            },
-            {
-              title: 'Dry Cleaning',
-              description: 'Eco-friendly stain removal process',
-              features: [
-                'Organic cleaning solvents',
-                'Advanced stain treatment',
-                'Delicate fabric care',
-                'Perfect finishing',
-              ],
-              image: '/image/2.jpg',
-              icon: FaTshirt,
-            },
-            {
-              title: 'Steam Press',
-              description: 'Sharp & crease-free garments',
-              features: [
-                'Industrial steam press',
-                'Wrinkle-free finish',
-                'All fabric types',
-                'Fast turnaround',
-              ],
-              image: '/image/3.jpg',
-              icon: FaFire,
-            },
-            {
-              title: 'Sanitize Wash',
-              description: '99.9% germ elimination wash',
-              features: [
-                'Hospital grade hygiene',
-                'Safe for sensitive skin',
-                'Baby clothing friendly',
-                'Odour removal',
-              ],
-              image: '/image/4.jpg',
-              icon: FaHandSparkles,
-            },
-            {
-              title: 'Special Laundry',
-              description: 'White-glove premium fabric care',
-              features: [
-                'Hand wash for delicates',
-                'Designer wear care',
-                'Luxury packaging',
-                'Extra attention',
-              ],
-              image: '/image/5.jpg',
-              icon: FaGem,
-            },
-            {
-              title: 'Curtain Wash',
-              description: 'Deep cleaning for home textiles',
-              features: [
-                'Heavy fabric care',
-                'Professional cleaning',
-                'Sofa covers included',
-                'Expert handling',
-              ],
-              image: '/image/6.jpg',
-              icon: FaCouch,
-            },
-          ].map((service, index) => {
-            const Icon = service.icon
-            const isEven = index % 2 === 0
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+            >
+              {currentServices.map((service, index) => {
+                const Icon = iconMap[service.icon] || FaTshirt
+                const isEven = index % 2 === 0
 
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className={`mb-10 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24 flex flex-col ${
-                  isEven ? 'md:flex-row' : 'md:flex-row-reverse'
-                } gap-6 sm:gap-7 md:gap-8 lg:gap-10 xl:gap-12 items-center`}
-              >
-                {/* Image Section */}
-                <motion.div
-                  initial={{ opacity: 0, x: isEven ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: index * 0.1 + 0.2 }}
-                  className="relative w-full md:w-1/2 h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl group"
-                >
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    onError={(e) => {
-                      e.target.src = 'https://images.unsplash.com/photo-1604335399105-a0c585fd81a9?w=800'
-                    }}
-                  />
-                  {/* Icon Overlay */}
-                  <div className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-[#00A1E4] rounded-lg p-2 sm:p-2.5 md:p-3 shadow-lg">
-                    <Icon className="text-white text-lg sm:text-xl md:text-2xl" />
-                  </div>
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                </motion.div>
-
-                {/* Content Section */}
-                <motion.div
-                  initial={{ opacity: 0, x: isEven ? 30 : -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: index * 0.1 + 0.3 }}
-                  className="w-full md:w-1/2 space-y-3 sm:space-y-4"
-                >
-                  <h3 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600">{service.description}</p>
-
-                  {/* Features List */}
-                  <ul className="space-y-2 sm:space-y-2.5 md:space-y-3 mt-4 sm:mt-5 md:mt-6">
-                    {service.features.map((feature, idx) => (
-                      <motion.li
-                        key={idx}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: index * 0.1 + 0.4 + idx * 0.1 }}
-                        className="flex items-start gap-2 sm:gap-3"
-                      >
-                        <span className="text-[#00A1E4] font-bold mt-0.5 sm:mt-1 text-sm sm:text-base">■</span>
-                        <span className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-
-                  {/* Blue Underline */}
+                return (
                   <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: '100%' }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: index * 0.1 + 0.6 }}
-                    className="h-0.5 sm:h-1 bg-gradient-to-r from-[#00A1E4] to-[#3EC4ED] rounded-full mt-4 sm:mt-5 md:mt-6"
-                  ></motion.div>
-                </motion.div>
-              </motion.div>
-            )
-          })}
+                    key={`${activeTab}-${index}`}
+                    initial={{ opacity: 0, y: 60 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-100px' }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className={`mb-10 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24 flex flex-col ${
+                      isEven ? 'md:flex-row' : 'md:flex-row-reverse'
+                    } gap-6 sm:gap-7 md:gap-8 lg:gap-10 xl:gap-12 items-center`}
+                  >
+                    {/* Image Section */}
+                    <motion.div
+                      initial={{ opacity: 0, x: isEven ? -30 : 30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: index * 0.1 + 0.2 }}
+                      className="relative w-full md:w-1/2 h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl group"
+                    >
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        onError={(e) => {
+                          e.target.src = 'https://images.unsplash.com/photo-1604335399105-a0c585fd81a9?w=800'
+                        }}
+                      />
+                      <div className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-[#00A1E4] rounded-lg p-2 sm:p-2.5 md:p-3 shadow-lg">
+                        <Icon className="text-white text-lg sm:text-xl md:text-2xl" />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </motion.div>
+
+                    {/* Content Section */}
+                    <motion.div
+                      initial={{ opacity: 0, x: isEven ? 30 : -30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: index * 0.1 + 0.3 }}
+                      className="w-full md:w-1/2 space-y-3 sm:space-y-4"
+                    >
+                      <h3 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600">{service.description}</p>
+
+                      <ul className="space-y-2 sm:space-y-2.5 md:space-y-3 mt-4 sm:mt-5 md:mt-6">
+                        {service.features.map((feature, idx) => (
+                          <motion.li
+                            key={idx}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 + 0.4 + idx * 0.1 }}
+                            className="flex items-start gap-2 sm:gap-3"
+                          >
+                            <span className="text-[#00A1E4] font-bold mt-0.5 sm:mt-1 text-sm sm:text-base">■</span>
+                            <span className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700">{feature}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: '100%' }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: index * 0.1 + 0.6 }}
+                        className="h-0.5 sm:h-1 bg-gradient-to-r from-[#00A1E4] to-[#3EC4ED] rounded-full mt-4 sm:mt-5 md:mt-6"
+                      ></motion.div>
+                    </motion.div>
+                  </motion.div>
+                )
+              })}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
 

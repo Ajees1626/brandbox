@@ -1,89 +1,84 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   FaTshirt,
   FaFire,
   FaHandSparkles,
-  FaTshirt as FaLaundry,
+  FaCouch,
+  FaGem,
+  FaCrown,
 } from "react-icons/fa";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import servicesData from "../data/servicesData.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const iconMap = {
+  FaTshirt,
+  FaFire,
+  FaHandSparkles,
+  FaCouch,
+  FaGem,
+  FaCrown,
+};
+
+function ServiceCard({ service, cardRef }) {
+  const Icon = iconMap[service.icon] || FaTshirt;
+  return (
+    <article
+      ref={cardRef}
+      className="group bg-white/30 backdrop-blur-lg border border-white/80 rounded-3xl p-8 text-white shadow-2xl transition-all duration-500 hover:-translate-y-4"
+    >
+      <div className="flex justify-center mb-6">
+        <div className="bg-gradient-to-br from-[#00A1E4] to-[#3EC4ED] p-5 rounded-full shadow-xl transition-transform duration-500 group-hover:scale-110">
+          <Icon className="text-3xl text-white" />
+        </div>
+      </div>
+      <h3 className="text-xl font-semibold text-center mb-4">{service.title}</h3>
+      <p className="text-gray-300 text-center text-sm leading-relaxed mb-6">
+        {service.description}
+      </p>
+      <div className="text-center">
+        <Link
+          to="/services"
+          className="text-[#3EC4ED] hover:text-white font-medium transition"
+        >
+          Learn More →
+        </Link>
+      </div>
+    </article>
+  );
+}
+
 function ServicesPreview() {
   const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
+  const servicesCardsRef = useRef([]);
+  const exclusiveCardsRef = useRef([]);
 
-  cardsRef.current = [];
+  const services = servicesData.services.slice(0, 2);
+  const exclusiveServices = servicesData.exclusiveServices.slice(0, 2);
 
-  const addToRefs = (el) => {
-    if (el && !cardsRef.current.includes(el)) {
-      cardsRef.current.push(el);
-    }
-  };
-
-  const services = [
-    {
-      icon: FaTshirt,
-      title: "Dry Cleaning",
-      description:
-        "Luxury fabric-safe dry cleaning with advanced stain removal technology.",
-    },
-    {
-      icon: FaLaundry,
-      title: "Premium Laundry",
-      description:
-        "High-quality wash & fold using eco-friendly premium detergents.",
-    },
-    {
-      icon: FaFire,
-      title: "Steam Press",
-      description:
-        "Crisp, wrinkle-free ironing for business and casual wear.",
-    },
-    {
-      icon: FaHandSparkles,
-      title: "Sanitize Wash",
-      description:
-        "Advanced hygienic treatment perfect for kids & sensitive skin.",
-    },
-  ];
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-
-      // Set initial state (important for smooth animation)
-      gsap.set(cardsRef.current, {
-        opacity: 0,
-        y: 120,
-        scale: 0.8,
-        rotateY: 15
-      });
-
-      // Advanced Reveal Animation
-      gsap.to(cardsRef.current, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        rotateY: 0,
-        duration: 1.4,
-        stagger: {
-          each: 0.2,
-          from: "center"
-        },
-        ease: "expo.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-          end: "bottom 60%",
-          toggleActions: "play none none reverse",
+      const allCards = [...servicesCardsRef.current, ...exclusiveCardsRef.current].filter(Boolean);
+      gsap.fromTo(
+        allCards,
+        { opacity: 0, y: 100 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            once: true,
+          },
         }
-      });
-
+      );
     }, sectionRef);
-
-    ScrollTrigger.refresh();
 
     return () => ctx.revert();
   }, []);
@@ -91,82 +86,61 @@ function ServicesPreview() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-12 sm:py-16 md:py-20 lg:py-24 bg-fixed bg-center bg-cover overflow-hidden"
-      style={{
-        backgroundImage:
-          "url('/image/h1.jpg')",
-      }}
+      className="relative py-16 sm:py-20 lg:py-24 bg-cover bg-center overflow-hidden"
+      style={{ backgroundImage: "url('/image/h1.jpg')" }}
     >
-      {/* Premium Dark Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-[#00A1E4]/80 to-black/10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#00A1E4]/60 to-black/40"></div>
 
-      {/* Soft Glow Effect */}
-      <div className="absolute top-0 left-0 w-48 sm:w-60 md:w-72 h-48 sm:h-60 md:h-72 bg-blue-500/20 blur-[80px] sm:blur-[100px] md:blur-[120px] rounded-full"></div>
-      <div className="absolute bottom-0 right-0 w-48 sm:w-60 md:w-72 h-48 sm:h-60 md:h-72 bg-cyan-400/20 blur-[80px] sm:blur-[100px] md:blur-[120px] rounded-full"></div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-        {/* Heading */}
-        <div className="text-center mb-12 sm:mb-16 md:mb-18 lg:mb-20 text-white">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-wide mb-4 sm:mb-5 md:mb-6 leading-tight sm:leading-tight">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="text-center mb-12 text-white">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
             Premium Care for Every Fabric
           </h2>
-          <p className="text-gray-300 max-w-full sm:max-w-xl md:max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-4 sm:px-0">
-            Experience world-class laundry and dry cleaning services designed
-            for elegance, hygiene, and ultimate convenience.
+          <p className="mt-4 max-w-2xl mx-auto text-gray-300">
+            Experience world-class laundry and dry cleaning services designed for
+            elegance, hygiene, and ultimate convenience.
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 md:gap-8 lg:gap-10">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <div
-                key={index}
-                ref={addToRefs}
-                className="group relative bg-white/10 backdrop-blur-xl border border-white/20 
-                rounded-2xl sm:rounded-3xl p-6 sm:p-7 md:p-8 lg:p-10 text-white shadow-xl sm:shadow-2xl 
-                hover:scale-105 transition-all duration-500"
-              >
-                {/* Glow border effect */}
-                <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-500/20 to-cyan-400/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        {/* One row: 2 divs Services | 2 divs Exclusive */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Services - 2 cards */}
+          <div>
+            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6 text-center lg:text-left">
+              Services
+            </h3>
+            <div className="grid gap-6 sm:grid-cols-2">
+              {services.map((service, index) => (
+                <ServiceCard
+                  key={service.title}
+                  service={service}
+                  cardRef={(el) => (servicesCardsRef.current[index] = el)}
+                />
+              ))}
+            </div>
+          </div>
 
-                <div className="relative z-10">
-                  <div className="mb-4 sm:mb-5 md:mb-6 flex justify-center">
-                    <div className="bg-gradient-to-br from-[#00A1E4] to-[#3EC4ED] p-3 sm:p-4 md:p-5 rounded-full shadow-lg">
-                      <Icon className="text-2xl sm:text-2.5xl md:text-3xl text-white" />
-                    </div>
-                  </div>
-
-                  <h3 className="text-lg sm:text-xl md:text-xl lg:text-2xl font-semibold text-center mb-3 sm:mb-3.5 md:mb-4">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-gray-300 text-center text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-5 md:mb-6">
-                    {service.description}
-                  </p>
-
-                  <div className="text-center mt-6 sm:mt-7 md:mt-8">
-                    <Link
-                      to="/services"
-                      className="text-[#3EC4ED] hover:text-white transition font-medium text-sm sm:text-base"
-                    >
-                      Learn More →
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {/* Exclusive Services - 2 cards */}
+          <div>
+            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6 text-center lg:text-left">
+              Exclusive Services
+            </h3>
+            <div className="grid gap-6 sm:grid-cols-2">
+              {exclusiveServices.map((service, index) => (
+                <ServiceCard
+                  key={service.title}
+                  service={service}
+                  cardRef={(el) => (exclusiveCardsRef.current[index] = el)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* CTA */}
-        <div className="text-center mt-12 sm:mt-16 md:mt-18 lg:mt-20">
+        <div className="text-center mt-16">
           <Link
             to="/services"
-            className="inline-block bg-gradient-to-r from-[#00A1E4] to-[#3EC4ED] 
-            text-white px-6 sm:px-8 md:px-10 py-2.5 sm:py-3 md:py-4 rounded-full shadow-xl sm:shadow-2xl 
-            hover:scale-110 transition-all duration-300 text-sm sm:text-base md:text-lg font-semibold"
+            className="inline-block bg-gradient-to-r from-[#00A1E4] to-[#3EC4ED] text-white px-10 py-4 rounded-full shadow-xl hover:scale-105 transition-transform duration-300 font-semibold"
           >
             View All Services
           </Link>

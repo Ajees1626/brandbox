@@ -1,13 +1,24 @@
+import { FaStar } from "react-icons/fa";
+
 function TestimonialCard({ quote, author, role }) {
   return (
-    <div className="text-center">
-      <p className="text-gray-700 text-sm sm:text-base md:text-lg lg:text-xl italic leading-relaxed mb-4 sm:mb-5 md:mb-6 px-2 sm:px-0">
+    <div>
+      {/* Stars */}
+      <div className="flex justify-center mb-4 text-yellow-400">
+        {[...Array(5)].map((_, i) => (
+          <FaStar key={i} />
+        ))}
+      </div>
+
+      <p className="text-gray-700 text-base sm:text-lg lg:text-xl italic leading-relaxed mb-6">
         "{quote}"
       </p>
-      <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-gray-900 mb-1 sm:mb-1.5 md:mb-2">
+
+      <h4 className="text-lg sm:text-xl font-semibold text-gray-900">
         {author}
       </h4>
-      <span className="text-xs sm:text-sm md:text-base text-gray-500">{role}</span>
+
+      <span className="text-sm text-gray-500">{role}</span>
     </div>
   );
 }

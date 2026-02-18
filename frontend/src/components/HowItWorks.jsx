@@ -1,14 +1,7 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect } from "react";
 import { FaTruck, FaBoxOpen } from "react-icons/fa";
 
-gsap.registerPlugin(ScrollTrigger);
-
 function HowItWorks() {
-  const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
-
   const steps = [
     {
       title: "Pickup",
@@ -25,34 +18,46 @@ function HowItWorks() {
   ];
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
+    const fadeUps = document.querySelectorAll(".fade-up");
+    const reveals = document.querySelectorAll(".reveal");
 
-      cardsRef.current.forEach((card) => {
-        if (!card) return;
-        gsap.from(card, {
-          y: 80,
-          opacity: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
+    const fadeUpObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
         });
-      });
+      },
+      { threshold: 0.2 }
+    );
 
-    }, sectionRef);
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
-    return () => ctx.revert();
+    fadeUps.forEach((el) => fadeUpObserver.observe(el));
+    reveals.forEach((el) => revealObserver.observe(el));
+
+    return () => {
+      fadeUps.forEach((el) => fadeUpObserver.unobserve(el));
+      reveals.forEach((el) => revealObserver.unobserve(el));
+    };
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#E4F4F9]">
+    <section className="relative z-10 py-12 sm:py-16 md:py-20 lg:py-24 bg-[#E4F4F9]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
 
         <div className="text-center mb-10 sm:mb-12 md:mb-14 lg:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight px-4 sm:px-0">
+          <h2 className="fade-up text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight px-4 sm:px-0">
             Hassle-Free Laundry in 2 Steps
           </h2>
         </div>
@@ -61,8 +66,7 @@ function HowItWorks() {
           {steps.map((item, index) => (
             <div
               key={index}
-              ref={(el) => (cardsRef.current[index] = el)}
-              className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-6 sm:p-7 md:p-8 lg:p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className="reveal bg-white rounded-xl sm:rounded-2xl shadow-lg p-6 sm:p-7 md:p-8 lg:p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
               <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#3EC4ED] mb-4 sm:mb-5 md:mb-6">
                 {item.icon}

@@ -5,14 +5,21 @@ function Footer() {
   const footerLinks = {
     services: [
       { path: "/services", label: "Dry Cleaning" },
-      { path: "/services", label: "Laundry" },
-      { path: "/services", label: "Steam Press" },
-      { path: "/services", label: "Special Care" },
+      { path: "/services", label: "Stain Removing" },
+      { path: "/services", label: "Bleaching" },
+      { path: "/services", label: "Roll Polishing" },
+      { path: "/services", label: "Roll Pressing" },
+    ],
+    exclusiveServices: [
+      { path: "/services", label: "Bridal Lehanga" },
+      { path: "/services", label: "Bridal Gowns" },
+      { path: "/services", label: "Bridal Sarees" },
+      { path: "/services", label: "Blazers" },
     ],
     company: [
       { path: "/about", label: "About Us" },
-      { path: "/contact", label: "Contact" },
       { path: "/services", label: "Services" },
+      { path: "/contact", label: "Contact" },
     ],
   };
 
@@ -21,9 +28,9 @@ function Footer() {
       <footer
         className="
         relative overflow-hidden
-        max-w-7xl mx-auto
+        w-full max-w-7xl mx-auto
         rounded-2xl sm:rounded-3xl
-        px-5 sm:px-7 md:px-10 lg:px-12 xl:px-16 py-10 sm:py-12 md:py-14 lg:py-16
+        px-5 sm:px-7 md:px-10 lg:px-12 xl:px-16 2xl:px-20 py-10 sm:py-12 md:py-14 lg:py-16 xl:py-16
         shadow-xl sm:shadow-2xl
         border border-white/10
         bg-gradient-to-br 
@@ -33,31 +40,35 @@ function Footer() {
         text-gray-800
       "
       >
-        {/* BIG Background Brand Text */}
+        {/* BIG Background Brand Text - Bottom, full width, responsive (no overflow) */}
         <h1
           className="
           absolute 
           bottom-0 
           left-1/2 
           -translate-x-1/2 
-          text-[80px] 
-          sm:text-[120px]
-          md:text-[160px] 
-          lg:text-[200px]
-          xl:text-[220px]
+          w-full
+          text-center 
           font-extrabold 
-          tracking-wider 
-          text-[#00A1E4]/30 sm:text-[#00A1E4]/35 md:text-[#00A1E4]/40
+          tracking-[0.02em] 
+          text-[#00A1E4]/25 
+          sm:text-[#00A1E4]/30 
+          md:text-[#00A1E4]/35 
+          lg:text-[#00A1E4]/40
           pointer-events-none
           select-none
-          hidden sm:block
+          block
+          leading-none
+          whitespace-nowrap
         "
+          style={{ fontSize: 'clamp(3rem, 13vw, 15rem)' }}
+          aria-hidden="true"
         >
           BRANDBOX
         </h1>
 
         {/* Content */}
-        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12">
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
 
           {/* Company Info */}
           <div className="sm:col-span-2 lg:col-span-1">
@@ -65,7 +76,7 @@ function Footer() {
               <img 
                 src="/image/Logo.png" 
                 alt="The Brand Box Logo" 
-                className="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 w-auto"
+                className="h-14 sm:h-16 md:h-20 lg:h-24 xl:h-28 w-auto"
               />
             </div>
             <p className="text-xs sm:text-sm md:text-base text-gray-700 mb-4 sm:mb-5 md:mb-6 leading-relaxed max-w-md sm:max-w-none">
@@ -81,6 +92,25 @@ function Footer() {
             </h4>
             <ul className="space-y-2 sm:space-y-2.5 md:space-y-3">
               {footerLinks.services.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.path}
+                    className="text-xs sm:text-sm md:text-base text-gray-700 hover:text-[#3EC4ED] transition duration-300 block"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Exclusive Services */}
+          <div>
+            <h4 className="text-gray-900 font-semibold mb-4 sm:mb-5 md:mb-6 text-base sm:text-lg md:text-xl">
+              Exclusive Services
+            </h4>
+            <ul className="space-y-2 sm:space-y-2.5 md:space-y-3">
+              {footerLinks.exclusiveServices.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.path}

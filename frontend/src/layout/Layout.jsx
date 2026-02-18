@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
+import SocialMediaSidebar from '../components/SocialMediaSidebar'
 
 function Layout({ children }) {
   return (
@@ -11,6 +12,7 @@ function Layout({ children }) {
       </main>
       <Footer />
       <ScrollToTop />
+      <SocialMediaSidebar />
     </div>
   )
 }

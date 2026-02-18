@@ -1,0 +1,6 @@
+export { default as AboutHeroSection } from './AboutHeroSection'
+export { default as WhoWeAreSection } from './WhoWeAreSection'
+export { default as MissionVisionSection } from './MissionVisionSection'
+export { default as WhyTrustUsSection } from './WhyTrustUsSection'
+export { default as OurJourneySection } from './OurJourneySection'
+export { default as AboutCTASection } from './AboutCTASection'

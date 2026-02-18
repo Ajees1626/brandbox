@@ -1,0 +1,186 @@
+{
+  "services": [
+    {
+      "title": "Dry Cleaning",
+      "description": "Fabric-safe dry cleaning with expert stain removal for formal and delicate garments.",
+      "features": [
+        "Organic cleaning solvents",
+        "Advanced stain treatment",
+        "Delicate fabric care",
+        "Perfect finishing"
+      ],
+      "image": "/image/1.jpg",
+      "icon": "FaTshirt"
+    },
+    {
+      "title": "Stain Removing",
+      "description": "Professional stain removal for all fabric types with safe, effective treatments.",
+      "features": [
+        "Expert stain analysis",
+        "Fabric-safe solutions",
+        "Pre-treatment process",
+        "Guaranteed results"
+      ],
+      "image": "/image/2.jpg",
+      "icon": "FaHandSparkles"
+    },
+    {
+      "title": "Bleaching",
+      "description": "Safe bleaching service to restore whiteness to your garments.",
+      "features": [
+        "Controlled bleaching process",
+        "Fabric protection",
+        "Color restoration",
+        "Quality assurance"
+      ],
+      "image": "/image/3.jpg",
+      "icon": "FaFire"
+    },
+    {
+      "title": "Roll Polishing",
+      "description": "Professional roll polishing for crisp, polished finish on garments.",
+      "features": [
+        "Industrial roll polish",
+        "Smooth finish",
+        "All fabric types",
+        "Quick turnaround"
+      ],
+      "image": "/image/4.jpg",
+      "icon": "FaTshirt"
+    },
+    {
+      "title": "Roll Pressing",
+      "description": "Sharp, wrinkle-free pressing using industrial roll press technology.",
+      "features": [
+        "Industrial steam press",
+        "Wrinkle-free finish",
+        "Bulk pressing available",
+        "Professional quality"
+      ],
+      "image": "/image/5.jpg",
+      "icon": "FaFire"
+    },
+    {
+      "title": "Steam Pressing",
+      "description": "Steam pressing for sharp creases and wrinkle-free garments.",
+      "features": [
+        "Steam technology",
+        "All fabric types",
+        "Delicate handling",
+        "Fast service"
+      ],
+      "image": "/image/6.jpg",
+      "icon": "FaFire"
+    },
+    {
+      "title": "Carpet Cleaning",
+      "description": "Deep cleaning for carpets and rugs with professional equipment.",
+      "features": [
+        "Deep extraction",
+        "Stain removal",
+        "Odor elimination",
+        "Eco-friendly solutions"
+      ],
+      "image": "/image/1.jpg",
+      "icon": "FaCouch"
+    },
+    {
+      "title": "Darning",
+      "description": "Expert darning and repair services for damaged garments.",
+      "features": [
+        "Invisible mending",
+        "Expert craftsmanship",
+        "Fabric matching",
+        "Extended garment life"
+      ],
+      "image": "/image/2.jpg",
+      "icon": "FaHandSparkles"
+    },
+    {
+      "title": "Dyeing",
+      "description": "Professional dyeing service to refresh or change garment colors.",
+      "features": [
+        "Color matching",
+        "Even dye application",
+        "Fabric-safe dyes",
+        "Custom color options"
+      ],
+      "image": "/image/3.jpg",
+      "icon": "FaGem"
+    }
+  ],
+  "exclusiveServices": [
+    {
+      "title": "Bridal Lehanga",
+      "description": "Luxury care for bridal lehengas with delicate handling and premium finishing.",
+      "features": [
+        "Hand wash & dry clean",
+        "Stone & embroidery care",
+        "Premium packaging",
+        "White-glove service"
+      ],
+      "image": "/image/4.jpg",
+      "icon": "FaCrown"
+    },
+    {
+      "title": "Bridal Gowns",
+      "description": "Expert care for bridal gowns ensuring they look perfect on your special day.",
+      "features": [
+        "Specialized cleaning",
+        "Lace & silk care",
+        "Preservation packaging",
+        "By-appointment service"
+      ],
+      "image": "/image/5.jpg",
+      "icon": "FaCrown"
+    },
+    {
+      "title": "Bridal Sarees",
+      "description": "Premium care for bridal sarees with traditional and modern fabric expertise.",
+      "features": [
+        "Silk & zari care",
+        "Hand wash option",
+        "Starch & press",
+        "Premium folding"
+      ],
+      "image": "/image/6.jpg",
+      "icon": "FaCrown"
+    },
+    {
+      "title": "Blazers",
+      "description": "Professional dry cleaning and pressing for blazers and formal jackets.",
+      "features": [
+        "Structure preservation",
+        "Lapel pressing",
+        "Lining care",
+        "Crisp finish"
+      ],
+      "image": "/image/1.jpg",
+      "icon": "FaTshirt"
+    },
+    {
+      "title": "Suits",
+      "description": "Complete suit care with expert dry cleaning and precision pressing.",
+      "features": [
+        "2-piece & 3-piece care",
+        "Trouser crease",
+        "Jacket shaping",
+        "Premium packaging"
+      ],
+      "image": "/image/2.jpg",
+      "icon": "FaTshirt"
+    },
+    {
+      "title": "Sherwani",
+      "description": "Specialized care for sherwanis with embroidery and embellishment protection.",
+      "features": [
+        "Heavy embroidery care",
+        "Fabric preservation",
+        "Traditional folding",
+        "Premium finishing"
+      ],
+      "image": "/image/3.jpg",
+      "icon": "FaTshirt"
+    }
+  ]
+}

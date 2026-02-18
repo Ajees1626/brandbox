@@ -9,6 +9,7 @@ function Navbar() {
   const navigate = useNavigate();
   const logoTextRef = useRef(null);
   const lastScroll = useRef(0);
+  const ticking = useRef(false);
 
   const navLinks = [
     { path: "/", label: "Home" },
@@ -19,7 +20,6 @@ function Navbar() {
 
   const isActive = (path) => location.pathname === path;
 
-  // Split text into letters
   const splitText = (text) =>
     text.split("").map((char, i) => (
       <span key={i} className="inline-block">
@@ -27,35 +27,57 @@ function Navbar() {
       </span>
     ));
 
+  /* 🔥 Scroll Animation Only For Logo Text */
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
 
       if (!logoTextRef.current) return;
 
-      // Scroll Down → Hide
-      if (currentScroll > lastScroll.current && currentScroll > 50) {
-        gsap.to(logoTextRef.current.children, {
-          y: -20,
-          opacity: 0,
-          stagger: 0.02,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      }
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          // At very top → Always show
+          if (currentScroll <= 10) {
+            gsap.to(logoTextRef.current.children, {
+              y: 0,
+              opacity: 1,
+              stagger: 0.04,
+              duration: 0.4,
+              ease: "power3.out",
+            });
+          }
 
-      // Scroll Up → Show
-      else {
-        gsap.to(logoTextRef.current.children, {
-          y: 0,
-          opacity: 1,
-          stagger: 0.05,
-          duration: 0.4,
-          ease: "power3.out",
-        });
-      }
+          // Scroll Down → Hide letters
+          else if (
+            currentScroll > lastScroll.current &&
+            currentScroll > 60
+          ) {
+            gsap.to(logoTextRef.current.children, {
+              y: -25,
+              opacity: 0,
+              stagger: 0.02,
+              duration: 0.3,
+              ease: "power2.out",
+            });
+          }
 
-      lastScroll.current = currentScroll;
+          // Scroll Up → Show letters
+          else {
+            gsap.to(logoTextRef.current.children, {
+              y: 0,
+              opacity: 1,
+              stagger: 0.05,
+              duration: 0.4,
+              ease: "power3.out",
+            });
+          }
+
+          lastScroll.current = currentScroll;
+          ticking.current = false;
+        });
+
+        ticking.current = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -63,21 +85,21 @@ function Navbar() {
   }, []);
 
   return (
-    <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
       <nav className="w-full max-w-6xl bg-white shadow-xl rounded-2xl px-6 lg:px-10 py-4 flex items-center justify-between">
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3">
           <img
             src="/image/Logo.png"
-            alt="The Brand Box"
+            alt="The Brand Box Logo"
             className="h-8 md:h-10 w-auto"
           />
 
-          {/* Animated Logo Text */}
+          {/* Animated Logo Text - visible on mobile, tablet, desktop */}
           <span
             ref={logoTextRef}
-            className="text-lg md:text-xl font-bold text-[#00A1E4] hidden sm:inline overflow-hidden"
+            className="text-base sm:text-lg md:text-xl font-bold text-[#00A1E4] inline overflow-hidden"
           >
             {splitText("The Brand Box")}
           </span>
@@ -104,7 +126,7 @@ function Navbar() {
 
           <button
             onClick={() => navigate("/contact")}
-            className="bg-[#00A1E4] hover:bg-[#3EC4ED] text-white px-5 py-2 rounded-full transition duration-300 shadow-md"
+            className="bg-[#00A1E4] hover:bg-[#3EC4ED] text-white px-5 py-2 rounded-full transition duration-300 shadow-md hover:scale-105"
           >
             Book Now
           </button>
@@ -151,7 +173,7 @@ function Navbar() {
           </div>
         </div>
       )}
-    </div>
+    </header>
   );
 }
 

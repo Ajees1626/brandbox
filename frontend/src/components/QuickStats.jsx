@@ -17,16 +17,19 @@ function QuickStats() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Fade + Slide Animation with ScrollTrigger
+
+      /* ================= PREMIUM CARD REVEAL ================= */
+
       gsap.fromTo(
         statsRef.current,
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 80, scale: 0.9 },
         {
           opacity: 1,
           y: 0,
+          scale: 1,
           duration: 1,
           stagger: 0.2,
-          ease: "power3.out",
+          ease: "power4.out",
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 80%",
@@ -35,29 +38,37 @@ function QuickStats() {
         }
       );
 
-      // Counter Animation
-      statsRef.current.forEach((el, index) => {
-        if (!el) return;
-        
-        let obj = { val: 0 };
-        gsap.to(obj, {
-          val: stats[index].value,
-          duration: 2,
-          delay: 0.3 + index * 0.2,
-          ease: "power1.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-          onUpdate: function () {
-            if (el && el.querySelector(".counter")) {
-              el.querySelector(".counter").innerText =
-                Math.floor(obj.val) + stats[index].suffix;
-            }
-          },
+      /* ================= COUNTER ANIMATION - Runs every time section is in view ================= */
+
+      const runCounters = () => {
+        statsRef.current.forEach((el, index) => {
+          if (!el) return;
+          const counterEl = el.querySelector(".counter");
+          if (!counterEl) return;
+
+          counterEl.innerText = "0" + stats[index].suffix;
+          let obj = { val: 0 };
+
+          gsap.to(obj, {
+            val: stats[index].value,
+            duration: 2.2,
+            delay: index * 0.2,
+            ease: "power2.out",
+            onUpdate: function () {
+              const formatted = Math.floor(obj.val).toLocaleString();
+              counterEl.innerText = formatted + stats[index].suffix;
+            },
+          });
         });
+      };
+
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 80%",
+        onEnter: runCounters,
+        onEnterBack: runCounters,
       });
+
     }, sectionRef);
 
     return () => ctx.revert();
@@ -66,27 +77,37 @@ function QuickStats() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-12 sm:py-14 md:py-16 lg:py-20 bg-gradient-to-r from-[#00A1E4] via-[#3EC4ED] to-[#00A1E4] overflow-hidden"
+      aria-label="Company Performance Statistics"
+      className="relative py-16 md:py-20 lg:py-24 bg-gradient-to-r from-[#00A1E4] via-[#3EC4ED] to-[#00A1E4] overflow-hidden"
     >
-      {/* Glow Background Effect */}
-      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_white,_transparent_70%)]"></div>
+      {/* Animated Glow Background */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <div className="absolute w-[500px] h-[500px] bg-white rounded-full blur-3xl animate-pulse top-[-100px] left-[-100px]"></div>
+        <div className="absolute w-[400px] h-[400px] bg-white rounded-full blur-3xl animate-pulse bottom-[-120px] right-[-100px]"></div>
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-8 text-center">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 text-center">
+
           {stats.map((stat, index) => (
             <div
               key={index}
               ref={(el) => (statsRef.current[index] = el)}
-              className="backdrop-blur-md bg-white/10 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-lg sm:shadow-xl transition-all duration-500 hover:scale-105 hover:bg-white/20"
+              className="group backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-6 md:p-8 shadow-xl transition-all duration-500 hover:scale-105 hover:bg-white/20"
             >
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-2 sm:mb-2.5 md:mb-3 counter leading-tight">
+              <div className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3 counter tracking-tight">
                 0
               </div>
-              <div className="text-gray-100 text-xs sm:text-sm md:text-base lg:text-lg tracking-wide leading-tight sm:leading-normal">
+
+              <h3 className="text-gray-100 text-sm md:text-base lg:text-lg font-medium tracking-wide">
                 {stat.label}
-              </div>
+              </h3>
+
+              {/* Subtle underline animation */}
+              <div className="mt-3 h-[2px] w-0 bg-white mx-auto transition-all duration-500 group-hover:w-16"></div>
             </div>
           ))}
+
         </div>
       </div>
     </section>

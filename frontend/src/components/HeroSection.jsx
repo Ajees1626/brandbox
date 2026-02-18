@@ -81,8 +81,9 @@ const HeroSection = () => {
             ref={headingRef}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight sm:leading-tight md:leading-tight"
           >
-            <div className="mb-2">Laundry & Dry Cleaning</div>
-            <div className="text-[#3EC4ED]">Done Right.</div>
+          <div className="mb-2">Premium Garment Care</div>
+          <div className="text-[#3EC4ED]">Done Right.</div>
+
           </div>
 
           <p
