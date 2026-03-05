@@ -3,6 +3,7 @@ import Layout from './layout/Layout'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
+import ServiceDetails from './pages/ServiceDetails'
 import Contact from './pages/Contact'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/:slug" element={<ServiceDetails />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Layout>

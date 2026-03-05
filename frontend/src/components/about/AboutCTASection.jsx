@@ -24,7 +24,7 @@ function AboutCTASection() {
         
         {/* SEO Hidden H2 */}
         <h2 id="cta-heading" className="sr-only">
-          Book Premium Laundry and Dry Cleaning Service
+          Book Premium Dry Cleaning and Garment Care Service
         </h2>
 
         <motion.div
@@ -46,7 +46,7 @@ function AboutCTASection() {
 
           <p className="text-gray-600 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
             Join thousands of satisfied customers who trust BrandBox for
-            professional laundry and dry-cleaning services. Book your first
+            professional dry cleaning and garment care services. Book your first
             pickup today and feel the difference.
           </p>
         </motion.div>

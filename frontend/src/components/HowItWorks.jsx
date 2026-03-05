@@ -6,7 +6,7 @@ function HowItWorks() {
     {
       title: "Pickup",
       description:
-        "Schedule a convenient pickup time. We collect your laundry from your doorstep.",
+        "Schedule a convenient pickup time. We collect your garments from your doorstep.",
       icon: <FaBoxOpen />,
     },
     {
@@ -58,7 +58,7 @@ function HowItWorks() {
 
         <div className="text-center mb-10 sm:mb-12 md:mb-14 lg:mb-16">
           <h2 className="fade-up text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight px-4 sm:px-0">
-            Hassle-Free Laundry in 2 Steps
+            Hassle-Free Service in 2 Steps
           </h2>
         </div>
 

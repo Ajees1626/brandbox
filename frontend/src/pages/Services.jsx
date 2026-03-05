@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
   FaTshirt,
   FaFire,
@@ -10,6 +11,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion'
 import CTASection from '../components/CTASection'
 import servicesData from '../data/servicesData.json'
+import { slugify } from '../utils/serviceUtils'
 
 const iconMap = {
   FaTshirt,
@@ -70,7 +72,7 @@ function Services() {
             transition={{ delay: 0.5, duration: 1 }}
             className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white font-medium drop-shadow-lg px-2 sm:px-0"
           >
-            Comprehensive laundry and dry cleaning solutions for all your garment care needs
+            Comprehensive dry cleaning and garment care solutions for all your needs
           </motion.p>
         </div>
 
@@ -132,6 +134,7 @@ function Services() {
               {currentServices.map((service, index) => {
                 const Icon = iconMap[service.icon] || FaTshirt
                 const isEven = index % 2 === 0
+                const serviceSlug = slugify(service.title)
 
                 return (
                   <motion.div
@@ -144,14 +147,15 @@ function Services() {
                       isEven ? 'md:flex-row' : 'md:flex-row-reverse'
                     } gap-6 sm:gap-7 md:gap-8 lg:gap-10 xl:gap-12 items-center`}
                   >
-                    {/* Image Section */}
-                    <motion.div
-                      initial={{ opacity: 0, x: isEven ? -30 : 30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: index * 0.1 + 0.2 }}
-                      className="relative w-full md:w-1/2 h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl group"
-                    >
+                    {/* Image Section - clickable */}
+                    <Link to={`/services/${serviceSlug}`} className="w-full md:w-1/2 block">
+                      <motion.div
+                        initial={{ opacity: 0, x: isEven ? -30 : 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: index * 0.1 + 0.2 }}
+                        className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl group cursor-pointer"
+                      >
                       <img
                         src={service.image}
                         alt={service.title}
@@ -165,6 +169,7 @@ function Services() {
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     </motion.div>
+                    </Link>
 
                     {/* Content Section */}
                     <motion.div
@@ -174,9 +179,11 @@ function Services() {
                       transition={{ duration: 0.8, delay: index * 0.1 + 0.3 }}
                       className="w-full md:w-1/2 space-y-3 sm:space-y-4"
                     >
-                      <h3 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight">
-                        {service.title}
-                      </h3>
+                      <Link to={`/services/${serviceSlug}`} className="block group/title">
+                        <h3 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight group-hover/title:text-[#00A1E4] transition-colors">
+                          {service.title}
+                        </h3>
+                      </Link>
                       <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600">{service.description}</p>
 
                       <ul className="space-y-2 sm:space-y-2.5 md:space-y-3 mt-4 sm:mt-5 md:mt-6">
@@ -194,6 +201,13 @@ function Services() {
                           </motion.li>
                         ))}
                       </ul>
+
+                      <Link
+                        to={`/services/${serviceSlug}`}
+                        className="inline-flex items-center gap-2 mt-4 sm:mt-5 md:mt-6 text-[#00A1E4] font-semibold hover:underline"
+                      >
+                        View Full Details →
+                      </Link>
 
                       <motion.div
                         initial={{ width: 0 }}
@@ -284,7 +298,7 @@ function Services() {
       </section>
 
       {/* ================= OUR BRANCHES SECTION ================= */}
-      <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-white via-[#E4F4F9] to-white overflow-hidden">
+      <section id="branches" className="relative py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-white via-[#E4F4F9] to-white overflow-hidden">
         {/* Soft background glows */}
         <div className="absolute top-0 left-0 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 bg-[#00A1E4]/5 blur-[80px] sm:blur-[100px] md:blur-[120px] lg:blur-[140px] rounded-full animate-pulse"></div>
         <div className="absolute bottom-0 right-0 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 bg-[#3EC4ED]/5 blur-[80px] sm:blur-[100px] md:blur-[120px] lg:blur-[140px] rounded-full animate-pulse"></div>

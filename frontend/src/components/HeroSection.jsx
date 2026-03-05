@@ -67,7 +67,7 @@ const HeroSection = () => {
         <img
           ref={imageRef}
           src="/image/hhs1.jpg"
-          alt="Laundry and dry cleaning service"
+          alt="Dry cleaning and garment care service"
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/40 sm:bg-black/30 md:bg-black/20"></div>

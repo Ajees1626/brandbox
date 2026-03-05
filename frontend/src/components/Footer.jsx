@@ -80,7 +80,7 @@ function Footer() {
               />
             </div>
             <p className="text-xs sm:text-sm md:text-base text-gray-700 mb-4 sm:mb-5 md:mb-6 leading-relaxed max-w-md sm:max-w-none">
-              Premium care at your doorstep. Luxury laundry & dry cleaning
+              Premium care at your doorstep. Luxury dry cleaning & garment care
               services designed for modern lifestyles.
             </p>
           </div>

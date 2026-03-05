@@ -31,7 +31,7 @@ function AboutHeroSection() {
           transition={{ delay: 0.5, duration: 1 }}
           className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white font-medium drop-shadow-lg px-2 sm:px-0"
         >
-          India's trusted premium laundry and dry-cleaning brand
+          India's trusted premium dry cleaning and garment care brand
         </motion.p>
       </div>
 

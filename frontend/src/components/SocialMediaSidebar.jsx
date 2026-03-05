@@ -7,6 +7,7 @@ import {
   FaWhatsapp,
   FaLinkedinIn,
   FaChevronRight,
+  FaChevronLeft ,
 } from "react-icons/fa";
 
 const socialLinks = [
@@ -59,7 +60,7 @@ function SocialMediaSidebar() {
             fixed left-0 top-1/2 -translate-y-1/2 z-9998
             w-8 h-14 sm:w-9 sm:h-20 md:w-10 md:h-24 flex items-center justify-center
             min-w-[44px] min-h-[44px] md:min-w-0 md:min-h-0
-            bg-[#00A1E4] hover:bg-[#3EC4ED] active:bg-[#0090cc] text-white
+            bg-[#00a0e456] hover:bg-[#3ec4edc8] active:bg-[#0090cc] text-white
             rounded-r-md sm:rounded-r-lg shadow-lg transition-all duration-300
             touch-manipulation
             ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}
@@ -99,7 +100,7 @@ function SocialMediaSidebar() {
             aria-label="Close social media"
             className="flex items-center justify-center w-full py-2.5 sm:py-3 min-h-[44px] md:min-h-0 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 text-gray-600 hover:text-[#00A1E4] transition-colors text-lg sm:text-xl font-medium border-t border-gray-200/50 touch-manipulation"
           >
-            &lt;
+           <FaChevronLeft className="text-base sm:text-lg md:text-xl" />
           </button>
         </div>
       </div>

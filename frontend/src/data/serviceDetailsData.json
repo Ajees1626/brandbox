@@ -1,0 +1,213 @@
+{
+  "dry-cleaning": {
+    "processImages": [
+      { "src": "/image/1.jpg", "label": "Inspection" },
+      { "src": "/image/2.jpg", "label": "Pre-treatment" },
+      { "src": "/image/3.jpg", "label": "Dry Clean" },
+      { "src": "/image/4.jpg", "label": "Finishing" }
+    ],
+    "fullDescription": "Our dry cleaning process uses eco-friendly solvents and advanced technology to deliver pristine results. Every garment is individually inspected, pre-treated for stains, cleaned in state-of-the-art machines, and finished to perfection. We handle formal wear, delicate fabrics, and everyday items with the same care and expertise.",
+    "results": [
+      "99% stain removal success rate",
+      "72-hour standard turnaround",
+      "Fabric-safe organic solvents",
+      "Professional crisp finishing"
+    ]
+  },
+  "stain-removing": {
+    "processImages": [
+      { "src": "/image/2.jpg", "label": "Analysis" },
+      { "src": "/image/3.jpg", "label": "Treatment" },
+      { "src": "/image/4.jpg", "label": "Wash" }
+    ],
+    "fullDescription": "Our stain removal experts analyze each stain type and fabric before applying the right treatment. We use fabric-safe solutions and proven techniques to remove oil, ink, wine, and other stubborn stains without damaging your garments.",
+    "results": [
+      "Expert stain identification",
+      "Guaranteed removal on most stains",
+      "No fabric damage",
+      "Same-day service available"
+    ]
+  },
+  "bleaching": {
+    "processImages": [
+      { "src": "/image/3.jpg", "label": "Assessment" },
+      { "src": "/image/4.jpg", "label": "Bleach Process" },
+      { "src": "/image/5.jpg", "label": "Rinse & Dry" }
+    ],
+    "fullDescription": "Safe, controlled bleaching restores whiteness to yellowed whites. Our process protects fabric integrity while effectively removing discoloration from cotton, linen, and synthetic blends.",
+    "results": [
+      "Controlled bleaching",
+      "Fabric protection",
+      "Color restoration",
+      "Quality assurance"
+    ]
+  },
+  "roll-polishing": {
+    "processImages": [
+      { "src": "/image/4.jpg", "label": "Setup" },
+      { "src": "/image/5.jpg", "label": "Polish" },
+      { "src": "/image/6.jpg", "label": "Finish" }
+    ],
+    "fullDescription": "Industrial roll polishing gives garments a crisp, professional finish. Ideal for shirts, uniforms, and formal wear. Our machines handle all fabric types with consistent, smooth results.",
+    "results": [
+      "Industrial-grade equipment",
+      "Smooth polished finish",
+      "All fabric types",
+      "Quick turnaround"
+    ]
+  },
+  "roll-pressing": {
+    "processImages": [
+      { "src": "/image/5.jpg", "label": "Steam" },
+      { "src": "/image/6.jpg", "label": "Press" },
+      { "src": "/image/1.jpg", "label": "Fold" }
+    ],
+    "fullDescription": "Sharp, wrinkle-free pressing using industrial steam and roll press technology. Perfect for bulk orders, uniforms, and everyday garments. Professional quality every time.",
+    "results": [
+      "Wrinkle-free finish",
+      "Bulk pressing available",
+      "Industrial steam press",
+      "Professional quality"
+    ]
+  },
+  "steam-pressing": {
+    "processImages": [
+      { "src": "/image/6.jpg", "label": "Steam" },
+      { "src": "/image/1.jpg", "label": "Press" }
+    ],
+    "fullDescription": "Steam pressing delivers sharp creases and wrinkle-free garments. Safe for all fabric types including delicate silks and synthetics. Fast, efficient service.",
+    "results": [
+      "Steam technology",
+      "All fabric types",
+      "Delicate handling",
+      "Fast service"
+    ]
+  },
+  "carpet-cleaning": {
+    "processImages": [
+      { "src": "/image/1.jpg", "label": "Vacuum" },
+      { "src": "/image/2.jpg", "label": "Deep Clean" },
+      { "src": "/image/3.jpg", "label": "Extract" }
+    ],
+    "fullDescription": "Deep cleaning for carpets and rugs using professional extraction equipment. Removes dirt, stains, and odors. Eco-friendly solutions safe for homes and offices.",
+    "results": [
+      "Deep extraction",
+      "Stain & odor removal",
+      "Eco-friendly solutions",
+      "Professional equipment"
+    ]
+  },
+  "darning": {
+    "processImages": [
+      { "src": "/image/2.jpg", "label": "Inspect" },
+      { "src": "/image/3.jpg", "label": "Mend" },
+      { "src": "/image/4.jpg", "label": "Finish" }
+    ],
+    "fullDescription": "Expert darning and invisible mending for damaged garments. Our craftsmen match fabric and thread to extend the life of your favorite clothes.",
+    "results": [
+      "Invisible mending",
+      "Expert craftsmanship",
+      "Fabric matching",
+      "Extended garment life"
+    ]
+  },
+  "dyeing": {
+    "processImages": [
+      { "src": "/image/3.jpg", "label": "Color Match" },
+      { "src": "/image/4.jpg", "label": "Dye" },
+      { "src": "/image/5.jpg", "label": "Rinse" }
+    ],
+    "fullDescription": "Professional dyeing to refresh or change garment colors. Even application, fabric-safe dyes, and custom color options. Breathe new life into faded or stained items.",
+    "results": [
+      "Color matching",
+      "Even dye application",
+      "Fabric-safe dyes",
+      "Custom color options"
+    ]
+  },
+  "bridal-lehanga": {
+    "processImages": [
+      { "src": "/image/4.jpg", "label": "Inspection" },
+      { "src": "/image/5.jpg", "label": "Hand Wash" },
+      { "src": "/image/6.jpg", "label": "Stone Care" },
+      { "src": "/image/1.jpg", "label": "Packaging" }
+    ],
+    "fullDescription": "Luxury care for bridal lehengas with delicate handling. Hand wash and dry clean options. Special care for stones, embroidery, and zari. Premium packaging and white-glove service.",
+    "results": [
+      "Hand wash & dry clean",
+      "Stone & embroidery care",
+      "Premium packaging",
+      "White-glove service"
+    ]
+  },
+  "bridal-gowns": {
+    "processImages": [
+      { "src": "/image/5.jpg", "label": "Inspect" },
+      { "src": "/image/6.jpg", "label": "Clean" },
+      { "src": "/image/1.jpg", "label": "Preserve" }
+    ],
+    "fullDescription": "Expert care for bridal gowns. Specialized cleaning for lace, silk, and delicate fabrics. Preservation packaging and by-appointment service for your special day.",
+    "results": [
+      "Lace & silk care",
+      "Preservation packaging",
+      "By-appointment service",
+      "Perfect for your day"
+    ]
+  },
+  "bridal-sarees": {
+    "processImages": [
+      { "src": "/image/6.jpg", "label": "Silk Care" },
+      { "src": "/image/1.jpg", "label": "Press" },
+      { "src": "/image/2.jpg", "label": "Fold" }
+    ],
+    "fullDescription": "Premium care for bridal sarees. Silk and zari expertise. Hand wash option, starch & press, and premium folding. Traditional and modern fabric expertise.",
+    "results": [
+      "Silk & zari care",
+      "Hand wash option",
+      "Starch & press",
+      "Premium folding"
+    ]
+  },
+  "blazers": {
+    "processImages": [
+      { "src": "/image/1.jpg", "label": "Dry Clean" },
+      { "src": "/image/2.jpg", "label": "Lapel Press" },
+      { "src": "/image/3.jpg", "label": "Finish" }
+    ],
+    "fullDescription": "Professional dry cleaning and pressing for blazers and formal jackets. Structure preservation, lapel pressing, lining care, and crisp finish for a sharp look.",
+    "results": [
+      "Structure preservation",
+      "Lapel pressing",
+      "Lining care",
+      "Crisp finish"
+    ]
+  },
+  "suits": {
+    "processImages": [
+      { "src": "/image/2.jpg", "label": "Clean" },
+      { "src": "/image/3.jpg", "label": "Press" },
+      { "src": "/image/4.jpg", "label": "Package" }
+    ],
+    "fullDescription": "Complete suit care for 2-piece and 3-piece suits. Expert dry cleaning, trouser crease, jacket shaping, and premium packaging. Look sharp for every occasion.",
+    "results": [
+      "2-piece & 3-piece care",
+      "Trouser crease",
+      "Jacket shaping",
+      "Premium packaging"
+    ]
+  },
+  "sherwani": {
+    "processImages": [
+      { "src": "/image/3.jpg", "label": "Inspect" },
+      { "src": "/image/4.jpg", "label": "Clean" },
+      { "src": "/image/5.jpg", "label": "Fold" }
+    ],
+    "fullDescription": "Specialized care for sherwanis. Heavy embroidery and embellishment protection. Fabric preservation, traditional folding, and premium finishing for ethnic wear.",
+    "results": [
+      "Heavy embroidery care",
+      "Fabric preservation",
+      "Traditional folding",
+      "Premium finishing"
+    ]
+  }
+}

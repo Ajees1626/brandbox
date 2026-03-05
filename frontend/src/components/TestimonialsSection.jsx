@@ -54,7 +54,7 @@ function TestimonialsSection() {
       role: "Startup Founder",
     },
     {
-      quote: "Best laundry service I've ever used!",
+      quote: "Best dry cleaning service I've ever used!",
       author: "Meera K",
       role: "Designer",
     },

@@ -67,7 +67,7 @@ function Contact() {
             transition={{ delay: 0.5, duration: 1 }}
             className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white font-medium drop-shadow-lg px-2 sm:px-0"
           >
-            Get in touch with us. We're here to help with all your laundry and dry cleaning needs.
+            Get in touch with us. We're here to help with all your dry cleaning and garment care needs.
           </motion.p>
         </div>
 

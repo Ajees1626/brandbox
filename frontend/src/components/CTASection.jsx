@@ -67,7 +67,7 @@ function CTASection() {
               </h2>
 
               <p className="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed max-w-full md:max-w-lg mx-auto md:mx-0 px-2 sm:px-0">
-                Discover premium laundry solutions crafted with precision,
+                Discover premium garment care solutions crafted with precision,
                 eco-conscious technology, and unmatched attention to detail.
                 Your fabrics deserve excellence.
               </p>

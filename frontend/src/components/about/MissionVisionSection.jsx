@@ -31,7 +31,7 @@ function MissionVisionSection() {
           id="mission-vision-heading"
           className="sr-only"
         >
-          Our Mission and Vision - Premium Laundry & Dry Cleaning Service
+          Our Mission and Vision - Premium Dry Cleaning & Garment Care Service
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
@@ -53,7 +53,7 @@ function MissionVisionSection() {
             </h3>
 
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed relative z-10">
-              To provide premium-quality laundry and dry cleaning services that
+              To provide premium-quality dry cleaning and garment care services that
               save time while delivering exceptional garment care. We strive to
               make professional care effortless, reliable, and accessible for
               every customer.

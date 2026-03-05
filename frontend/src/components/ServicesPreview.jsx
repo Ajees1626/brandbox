@@ -11,6 +11,7 @@ import {
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import servicesData from "../data/servicesData.json";
+import { slugify } from "../utils/serviceUtils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,7 +42,7 @@ function ServiceCard({ service, cardRef }) {
       </p>
       <div className="text-center">
         <Link
-          to="/services"
+          to={`/services/${slugify(service.title)}`}
           className="text-[#3EC4ED] hover:text-white font-medium transition"
         >
           Learn More →
@@ -97,7 +98,7 @@ function ServicesPreview() {
             Premium Care for Every Fabric
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-gray-300">
-            Experience world-class laundry and dry cleaning services designed for
+            Experience world-class dry cleaning and garment care services designed for
             elegance, hygiene, and ultimate convenience.
           </p>
         </div>

@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 
 const milestones = [
   {
-    year: "2019",
+    year: "2012",
     title: "BrandBox Founded",
     description:
-      "Started with a vision to modernize laundry and dry-cleaning services with quality and trust.",
+      "Started with a vision to modernize dry cleaning and garment care services with quality and trust.",
   },
   {
     year: "2020",

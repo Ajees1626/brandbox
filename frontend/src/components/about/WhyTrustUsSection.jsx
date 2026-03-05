@@ -64,7 +64,7 @@ function WhyTrustUsSection() {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         {/* SEO Hidden Heading */}
         <h2 id="why-trust-heading" className="sr-only">
-          Why Customers Trust Our Premium Laundry & Dry Cleaning Services
+          Why Customers Trust Our Premium Dry Cleaning & Garment Care Services
         </h2>
 
         {/* Section Title */}

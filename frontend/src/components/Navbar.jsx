@@ -1,15 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { gsap } from "gsap";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const logoTextRef = useRef(null);
-  const lastScroll = useRef(0);
-  const ticking = useRef(false);
 
   const navLinks = [
     { path: "/", label: "Home" },
@@ -19,70 +15,6 @@ function Navbar() {
   ];
 
   const isActive = (path) => location.pathname === path;
-
-  const splitText = (text) =>
-    text.split("").map((char, i) => (
-      <span key={i} className="inline-block">
-        {char === " " ? "\u00A0" : char}
-      </span>
-    ));
-
-  /* 🔥 Scroll Animation Only For Logo Text */
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScroll = window.scrollY;
-
-      if (!logoTextRef.current) return;
-
-      if (!ticking.current) {
-        window.requestAnimationFrame(() => {
-          // At very top → Always show
-          if (currentScroll <= 10) {
-            gsap.to(logoTextRef.current.children, {
-              y: 0,
-              opacity: 1,
-              stagger: 0.04,
-              duration: 0.4,
-              ease: "power3.out",
-            });
-          }
-
-          // Scroll Down → Hide letters
-          else if (
-            currentScroll > lastScroll.current &&
-            currentScroll > 60
-          ) {
-            gsap.to(logoTextRef.current.children, {
-              y: -25,
-              opacity: 0,
-              stagger: 0.02,
-              duration: 0.3,
-              ease: "power2.out",
-            });
-          }
-
-          // Scroll Up → Show letters
-          else {
-            gsap.to(logoTextRef.current.children, {
-              y: 0,
-              opacity: 1,
-              stagger: 0.05,
-              duration: 0.4,
-              ease: "power3.out",
-            });
-          }
-
-          lastScroll.current = currentScroll;
-          ticking.current = false;
-        });
-
-        ticking.current = true;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
@@ -96,12 +28,8 @@ function Navbar() {
             className="h-8 md:h-10 w-auto"
           />
 
-          {/* Animated Logo Text - visible on mobile, tablet, desktop */}
-          <span
-            ref={logoTextRef}
-            className="text-base sm:text-lg md:text-xl font-bold text-[#00A1E4] inline overflow-hidden"
-          >
-            {splitText("The Brand Box")}
+          <span className="text-base sm:text-lg md:text-xl font-bold text-[#00A1E4]">
+            The Brand Box
           </span>
         </Link>
 

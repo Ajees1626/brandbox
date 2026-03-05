@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Chennai - Head Office",
+    "address": "T. Nagar, Chennai - 600017",
+    "image": "/image/location.webp",
+    "phone": "+91 98765 43210"
+  },
+  {
+    "name": "Velachery",
+    "address": "Velachery Main Road",
+    "image": "/image/location.webp",
+    "phone": "+91 98765 43211"
+  },
+  {
+    "name": "Anna Nagar",
+    "address": "2nd Avenue, Anna Nagar",
+    "image": "/image/location.webp",
+    "phone": "+91 98765 43212"
+  },
+  {
+    "name": "Tambaram",
+    "address": "GST Road, Tambaram",
+    "image": "/image/location.webp",
+    "phone": "+91 98765 43213"
+  },
+  {
+    "name": "OMR",
+    "address": "Sholinganallur, OMR",
+    "image": "/image/location.webp",
+    "phone": "+91 98765 43214"
+  },
+  {
+    "name": "Porur",
+    "address": "Mount Poonamallee Road",
+    "image": "/image/location.webp",
+    "phone": "+91 98765 43215"
+  }
+]
