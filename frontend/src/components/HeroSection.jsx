@@ -74,8 +74,8 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-center justify-center sm:justify-start pt-20 sm:pt-24 md:pt-0 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
-        <div className="container mx-auto max-w-7xl text-white text-center sm:text-left">
+      <div className="relative z-10 h-full flex items-center justify-center sm:justify-start pt-16 sm:pt-24 md:pt-0 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 overflow-y-auto">
+        <div className="container mx-auto max-w-7xl text-white text-center sm:text-left w-full">
 
           <div
             ref={headingRef}
@@ -113,22 +113,22 @@ const HeroSection = () => {
             </Link>
           </div>
 
-          {/* Bottom Info Badges */}
-          <div className="mt-8 sm:mt-9 md:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center sm:justify-start">
-            <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium shadow-md text-xs sm:text-sm whitespace-nowrap">
+          {/* Bottom Info Badges - Box type, mobile responsive */}
+          <div className="mt-6 sm:mt-8 md:mt-10 grid grid-cols-2 sm:flex sm:flex-row sm:flex-wrap gap-2 sm:gap-3 md:gap-4 justify-center sm:justify-start max-w-full">
+            <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 py-2 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl font-medium shadow-md text-[11px] sm:text-sm border border-white/50">
               ✓ 120-Hour Turnaround
             </div>
-            <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium shadow-md text-xs sm:text-sm whitespace-nowrap">
+            <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 py-2 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl font-medium shadow-md text-[11px] sm:text-sm border border-white/50">
               ✓ Free Pickup & Delivery
             </div>
-            <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium shadow-md text-xs sm:text-sm whitespace-nowrap">
+            <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 py-2 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl font-medium shadow-md text-[11px] sm:text-sm border border-white/50">
               ✓ Eco-Friendly Care
             </div>
-            <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium shadow-md text-xs sm:text-sm whitespace-nowrap">
-              ✓ 8-hrs Express Service
+            <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 py-2 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl font-medium shadow-md text-[11px] sm:text-sm border border-white/50">
+              ✓ 8-hrs Express
             </div>
-            <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium shadow-md text-xs sm:text-sm whitespace-nowrap">
-              ✓ 1 Day Express Service
+            <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 py-2 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl font-medium shadow-md text-[11px] sm:text-sm border border-white/50 col-span-2 sm:col-span-1">
+              ✓ 1 Day Express
             </div>
           </div>
 
