@@ -23,7 +23,7 @@ function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3">
           <img
-            src="/image/Logo.png"
+            src="https://res.cloudinary.com/diqyc0vvg/image/upload/v1772879735/Logo_oh1eom.webp"
             alt="The Brand Box Logo"
             className="h-8 md:h-10 w-auto"
           />

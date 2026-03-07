@@ -11,7 +11,7 @@ function WhyChooseUs() {
     },
     {
       icon: FaClock,
-      title: "72-Hour Turnaround",
+      title: "120-Hour Turnaround",
       description:
         "Quick service without compromising garment quality.",
     },

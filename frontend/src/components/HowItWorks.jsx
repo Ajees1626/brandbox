@@ -12,7 +12,7 @@ function HowItWorks() {
     {
       title: "Delivery",
       description:
-        "Get clean, pressed clothes delivered back within 72 hours.",
+        "Get clean, pressed clothes delivered back within 120 hours.",
       icon: <FaTruck />,
     },
   ];

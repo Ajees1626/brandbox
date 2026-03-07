@@ -22,7 +22,7 @@ function WhoWeAreSection() {
     if (!statsInView) return;
     let startTime = Date.now();
     const duration = 2000;
-    const targetValues = { customers: 10000, turnaround: 72, satisfaction: 100 };
+    const targetValues = { customers: 10000, turnaround: 120, satisfaction: 100 };
 
     const animate = () => {
       const elapsed = Date.now() - startTime;

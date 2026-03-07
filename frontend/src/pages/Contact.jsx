@@ -1,6 +1,10 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa'
 import { motion } from 'framer-motion'
+import SEO from '../components/SEO'
+import branchesData from '../data/branchesData.json'
+
+const WEB3FORMS_ACCESS_KEY = '9f30c11d-6b0e-47cb-8d51-12b1c0263be2'
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -9,41 +13,84 @@ function Contact() {
     phone: '',
     message: '',
   })
+  const [status, setStatus] = useState({ type: '', message: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const [selectedBranch, setSelectedBranch] = useState({
-    name: 'Chennai - Head Office',
-    address: 'T. Nagar, Chennai - 600017',
-    coords: '13.0475,80.2319', // T. Nagar coordinates
-  })
+  const [selectedBranch, setSelectedBranch] = useState(branchesData[0])
+  const mapRef = useRef(null)
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     })
+    setStatus({ type: '', message: '' })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission here
-    alert('Thank you for your message! We will get back to you soon.')
-    setFormData({ name: '', email: '', phone: '', message: '' })
+    setIsSubmitting(true)
+    setStatus({ type: '', message: '' })
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          subject: `Contact from The Brand Box - ${formData.name}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setStatus({ type: 'success', message: 'Thank you! Your message has been sent. We will get back to you soon.' })
+        setFormData({ name: '', email: '', phone: '', message: '' })
+      } else {
+        setStatus({ type: 'error', message: data.message || 'Something went wrong. Please try again.' })
+      }
+    } catch (err) {
+      setStatus({ type: 'error', message: 'Failed to send message. Please try again or contact us directly.' })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
     <div className="overflow-hidden font-sans">
+      <SEO
+        title="Contact Us"
+        description="Contact The Brand Box for dry cleaning services. Visit our branches in K.K. Nagar, Ashok Nagar, Saligramam, Nesapakkam, Adyar, T. Nagar. Free pickup & delivery."
+        path="/contact"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'ContactPage',
+          name: 'Contact The Brand Box Dry Cleaners',
+          url: 'https://thebrandboxdrycleaners.com/contact',
+          mainEntity: {
+            '@type': 'LocalBusiness',
+            name: 'The Brand Box Dry Cleaners',
+            telephone: '+91 99520 50527',
+            email: ['info@drycleanersbrandbox.com', 'drycleanersbrandbox@gmail.com'],
+          },
+        }}
+      />
       {/* ================= HERO SECTION ================= */}
       <section className="relative h-screen min-h-[600px] sm:min-h-[700px] md:min-h-screen text-white flex items-center justify-center overflow-hidden">
         {/* Background Image */}
-        <div className="absolute inset-0">
-          <img
-            src="/image/chs1.jpg"
-            alt="Contact Us"
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              e.target.src = '/image/hhs1.jpg'
-            }}
-          />
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{
+            backgroundImage: "url('https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876255/2150871154_result_n7xsmk.webp')",
+          }}
+          role="img"
+          aria-label="Contact Us"
+        >
           {/* Brand Color Overlay Gradient */}
           <div className="absolute inset-0 bg-black/40 sm:bg-black/30 md:bg-black/20"></div>
         </div>
@@ -101,6 +148,17 @@ function Contact() {
             >
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">Send us a message</h2>
               <p className="text-sm sm:text-base text-gray-600 mb-6">We usually reply within business hours.</p>
+
+              {status.message && (
+                <div
+                  className={`mb-4 p-4 rounded-lg text-sm sm:text-base ${
+                    status.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                  }`}
+                >
+                  {status.message}
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                 <div>
                   <input
@@ -155,9 +213,10 @@ function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-[#00A1E4] to-[#3EC4ED] text-white px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg sm:rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-[#00A1E4] to-[#3EC4ED] text-white px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg sm:rounded-xl font-semibold hover:shadow-lg transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </motion.div>
@@ -178,7 +237,7 @@ function Contact() {
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs sm:text-sm font-semibold text-gray-600 uppercase tracking-wide">PHONE</p>
-                    <p className="text-base sm:text-lg md:text-xl font-bold text-gray-900 break-words">+91 99520 50527</p>
+                    <p className="text-base sm:text-lg md:text-xl font-bold text-gray-900 break-words">{selectedBranch.phone || '+91 99520 50527'}</p>
                   </div>
                 </div>
               </div>
@@ -191,7 +250,8 @@ function Contact() {
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs sm:text-sm font-semibold text-gray-600 uppercase tracking-wide">EMAIL</p>
-                    <p className="text-base sm:text-lg md:text-xl font-bold text-gray-900 break-words">care@brandbox.com</p>
+                    <a href="mailto:info@drycleanersbrandbox.com" className="text-base sm:text-lg md:text-xl font-bold text-gray-900 break-words hover:text-[#00A1E4] block">info@drycleanersbrandbox.com</a>
+                    <a href="mailto:drycleanersbrandbox@gmail.com" className="text-base sm:text-lg md:text-xl font-bold text-gray-900 break-words hover:text-[#00A1E4] block mt-1">drycleanersbrandbox@gmail.com</a>
                   </div>
                 </div>
               </div>
@@ -200,51 +260,17 @@ function Contact() {
               <div>
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-4 sm:mb-5 md:mb-6">Our Branches</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                  {[
-                    { 
-                      name: 'Chennai - Head Office', 
-                      address: 'T. Nagar, Chennai - 600017',
-                      coords: '13.0475,80.2319',
-                      query: 'T+Nagar,+Chennai,+Tamil+Nadu+600017'
-                    },
-                    { 
-                      name: 'Velachery', 
-                      address: 'Velachery Main Road',
-                      coords: '12.9716,80.2206',
-                      query: 'Velachery+Main+Road,+Chennai'
-                    },
-                    { 
-                      name: 'Anna Nagar', 
-                      address: '2nd Avenue, Anna Nagar',
-                      coords: '13.0850,80.2101',
-                      query: '2nd+Avenue,+Anna+Nagar,+Chennai'
-                    },
-                    { 
-                      name: 'Tambaram', 
-                      address: 'GST Road, Tambaram',
-                      coords: '12.9249,80.1000',
-                      query: 'GST+Road,+Tambaram,+Chennai'
-                    },
-                    { 
-                      name: 'OMR', 
-                      address: 'Sholinganallur, OMR',
-                      coords: '12.8996,80.2209',
-                      query: 'Sholinganallur,+OMR,+Chennai'
-                    },
-                    { 
-                      name: 'Porur', 
-                      address: 'Mount Poonamallee Road',
-                      coords: '13.0358,80.1569',
-                      query: 'Mount+Poonamallee+Road,+Porur,+Chennai'
-                    },
-                  ].map((branch, index) => (
+                  {branchesData.map((branch, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                      onClick={() => setSelectedBranch(branch)}
+                      onClick={() => {
+                        setSelectedBranch(branch)
+                        mapRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                      }}
                       className={`bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 shadow-md border-2 transition-all cursor-pointer ${
                         selectedBranch.name === branch.name
                           ? 'border-[#00A1E4] shadow-lg bg-[#E4F4F9]'
@@ -253,6 +279,7 @@ function Contact() {
                     >
                       <h3 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1">{branch.name}</h3>
                       <p className="text-xs sm:text-sm text-gray-600">{branch.address}</p>
+                      {branch.hours && <p className="text-xs text-[#00A1E4] font-medium mt-1">{branch.hours}</p>}
                     </motion.div>
                   ))}
                 </div>
@@ -263,7 +290,7 @@ function Contact() {
       </section>
 
       {/* Google Map Section */}
-      <section className="bg-gray-50 py-8 sm:py-12 md:py-16 lg:py-20">
+      <section ref={mapRef} id="map" className="bg-gray-50 py-8 sm:py-12 md:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
           <motion.div
             key={selectedBranch.name}
@@ -277,7 +304,7 @@ function Contact() {
             </div>
             <div className="rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-xl h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px]">
               <iframe
-                src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.2699!2d${selectedBranch.coords.split(',')[1]}!3d${selectedBranch.coords.split(',')[0]}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5266c5c5c5c5c5%3A0x3a5266c5c5c5c5c5!2s${selectedBranch.query || 'T+Nagar,+Chennai'}!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin`}
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(selectedBranch.address)}&output=embed`}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

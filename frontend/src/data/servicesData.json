@@ -9,7 +9,7 @@
         "Delicate fabric care",
         "Perfect finishing"
       ],
-      "image": "/image/1.jpg",
+      "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876304/4711_result_j2fyja.webp",
       "icon": "FaTshirt"
     },
     {
@@ -21,7 +21,7 @@
         "Pre-treatment process",
         "Guaranteed results"
       ],
-      "image": "/image/2.jpg",
+      "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876303/58575_result_pce5dg.webp",
       "icon": "FaHandSparkles"
     },
     {
@@ -33,7 +33,7 @@
         "Color restoration",
         "Quality assurance"
       ],
-      "image": "/image/3.jpg",
+      "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876303/156780_result_pyva9y.webp",
       "icon": "FaFire"
     },
     {
@@ -45,7 +45,7 @@
         "All fabric types",
         "Quick turnaround"
       ],
-      "image": "/image/4.jpg",
+      "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876302/193830_result_fidrx4.webp",
       "icon": "FaTshirt"
     },
     {
@@ -57,7 +57,7 @@
         "Bulk pressing available",
         "Professional quality"
       ],
-      "image": "/image/5.jpg",
+      "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876564/WhatsApp_Image_2026-03-04_at_3.13.32_PM_pvxlz0.webp",
       "icon": "FaFire"
     },
     {
@@ -69,7 +69,7 @@
         "Delicate handling",
         "Fast service"
       ],
-      "image": "/image/6.jpg",
+      "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876302/101531_result_tuhp9w.webp",
       "icon": "FaFire"
     },
     {
@@ -81,7 +81,7 @@
         "Odor elimination",
         "Eco-friendly solutions"
       ],
-      "image": "/image/1.jpg",
+      "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876302/4370_result_m8guwe.webp",
       "icon": "FaCouch"
     },
     {
@@ -119,7 +119,7 @@
         "Premium packaging",
         "White-glove service"
       ],
-      "image": "/image/4.jpg",
+      "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876327/25762_result_f7diqk.webp",
       "icon": "FaCrown"
     },
     {
@@ -131,7 +131,7 @@
         "Preservation packaging",
         "By-appointment service"
       ],
-      "image": "/image/5.jpg",
+      "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876330/19537_result_icv7yg.webp",
       "icon": "FaCrown"
     },
     {
@@ -143,7 +143,7 @@
         "Starch & press",
         "Premium folding"
       ],
-      "image": "/image/6.jpg",
+      "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876330/18029_result_jngccg.webp",
       "icon": "FaCrown"
     },
     {
@@ -155,7 +155,7 @@
         "Lining care",
         "Crisp finish"
       ],
-      "image": "/image/1.jpg",
+      "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876329/15008_result_hvwyks.webp",
       "icon": "FaTshirt"
     },
     {
@@ -167,7 +167,7 @@
         "Jacket shaping",
         "Premium packaging"
       ],
-      "image": "/image/2.jpg",
+      "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876328/19217_result_dqxmvp.webp",
       "icon": "FaTshirt"
     },
     {
@@ -179,7 +179,7 @@
         "Traditional folding",
         "Premium finishing"
       ],
-      "image": "/image/3.jpg",
+      "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876328/13515_result_osx0yh.webp",
       "icon": "FaTshirt"
     }
   ]

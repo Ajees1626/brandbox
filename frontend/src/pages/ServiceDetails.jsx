@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FaMapMarkerAlt, FaArrowLeft } from 'react-icons/fa'
+import SEO from '../components/SEO'
 import { getServiceBySlug } from '../utils/serviceUtils'
 import serviceDetailsData from '../data/serviceDetailsData.json'
 import branchesData from '../data/branchesData.json'
@@ -33,6 +34,21 @@ function ServiceDetails() {
 
   return (
     <div className="overflow-hidden font-sans bg-white">
+      <SEO
+        title={service.title}
+        description={fullDescription}
+        path={`/services/${slug}`}
+        image={typeof service.image === 'string' && service.image.startsWith('http') ? service.image : `https://thebrandboxdrycleaners.com${service.image}`}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: service.title,
+          description: fullDescription,
+          provider: { '@type': 'LocalBusiness', name: 'The Brand Box Dry Cleaners' },
+          url: `https://thebrandboxdrycleaners.com/services/${slug}`,
+          image: typeof service.image === 'string' && service.image.startsWith('http') ? service.image : `https://thebrandboxdrycleaners.com${service.image}`,
+        }}
+      />
       {/* Hero Section */}
       <section className="relative h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden">
         <div className="absolute inset-0">

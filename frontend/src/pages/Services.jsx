@@ -7,10 +7,14 @@ import {
   FaCouch,
   FaGem,
   FaCrown,
+  FaMapMarkerAlt,
+  FaWhatsapp,
 } from 'react-icons/fa'
 import { motion, AnimatePresence } from 'framer-motion'
-import CTASection from '../components/CTASection'
+ 
+import SEO from '../components/SEO'
 import servicesData from '../data/servicesData.json'
+import branchesData from '../data/branchesData.json'
 import { slugify } from '../utils/serviceUtils'
 
 const iconMap = {
@@ -28,25 +32,40 @@ function Services() {
   const currentServices = activeTab === 'services' ? servicesData.services : servicesData.exclusiveServices
 
   const pricing = [
-    { item: 'Shirt', price: '$3.50', itemType: 'Standard', note: 'Professional service included' },
-    { item: 'Pants', price: '$4.50', itemType: 'Standard', note: 'Professional service included' },
-    { item: 'Suit (2-piece)', price: '$12.00', itemType: 'Premium', note: 'Premium care included' },
-    { item: 'Dress', price: '$8.00', itemType: 'Standard', note: 'Professional service included' },
-    { item: 'Jacket', price: '$6.00', itemType: 'Standard', note: 'Professional service included' },
-    { item: 'Curtains (per panel)', price: '$15.00', itemType: 'Premium', note: 'Deep cleaning included' },
+    { item: 'Shirt', price: '₹150', itemType: 'Standard', note: 'Professional service included' },
+    { item: 'Pants', price: '₹150', itemType: 'Standard', note: 'Professional service included' },
+    { item: 'Blazer', price: '₹600', itemType: 'Premium', note: 'Premium care included' },
+    { item: 'Silk Saree', price: '₹400', itemType: 'Standard', note: 'Professional service included' },
+    { item: 'Jacket', price: '₹400', itemType: 'Standard', note: 'Professional service included' },
+    { item: 'Curtains', price: '₹400 - ₹1,500', itemType: 'Premium', note: 'Price varies by size' },
   ]
 
   return (
     <div className="overflow-hidden font-sans">
+      <SEO
+        title="Our Services"
+        description="Dry cleaning, stain removal, bleaching, roll polishing, bridal care & more. Transparent pricing. Visit our branches in K.K. Nagar, Ashok Nagar, Saligramam, Nesapakkam, Adyar, T. Nagar."
+        path="/services"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          serviceType: 'Dry Cleaning & Garment Care',
+          provider: { '@type': 'LocalBusiness', name: 'The Brand Box Dry Cleaners' },
+          areaServed: { '@type': 'City', name: 'Chennai' },
+          url: 'https://thebrandboxdrycleaners.com/services',
+        }}
+      />
       {/* ================= HERO SECTION ================= */}
       <section className="relative h-screen min-h-[600px] sm:min-h-[700px] md:min-h-screen text-white flex items-center justify-center overflow-hidden">
         {/* Background Image */}
-        <div className="absolute inset-0">
-          <img
-            src="/image/shs1.jpg"
-            alt="Our Services"
-            className="w-full h-full object-cover object-center"
-          />
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{
+            backgroundImage: "url('https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876255/154793_result_au9xvb.webp')",
+          }}
+          role="img"
+          aria-label="Our Services"
+        >
           {/* Brand Color Overlay Gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/30 to-black/30"></div>
           {/* Dark Overlay for Text Readability */}
@@ -121,7 +140,7 @@ function Services() {
       </section>
 
       {/* ================= SERVICES DETAIL SECTION (Alternating Image + Text) ================= */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 pb-16 sm:pb-20 md:pb-24 lg:pb-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
           <AnimatePresence mode="wait">
             <motion.div
@@ -135,13 +154,14 @@ function Services() {
                 const Icon = iconMap[service.icon] || FaTshirt
                 const isEven = index % 2 === 0
                 const serviceSlug = slugify(service.title)
+                const isLast = index === currentServices.length - 1
 
                 return (
                   <motion.div
                     key={`${activeTab}-${index}`}
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-100px' }}
+                    viewport={{ once: true, margin: isLast ? '50px' : '-100px', amount: isLast ? 0.1 : undefined }}
                     transition={{ duration: 0.8, delay: index * 0.1 }}
                     className={`mb-10 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24 flex flex-col ${
                       isEven ? 'md:flex-row' : 'md:flex-row-reverse'
@@ -175,9 +195,9 @@ function Services() {
                     <motion.div
                       initial={{ opacity: 0, x: isEven ? 30 : -30 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: true, margin: isLast ? '50px' : undefined, amount: isLast ? 0.1 : undefined }}
                       transition={{ duration: 0.8, delay: index * 0.1 + 0.3 }}
-                      className="w-full md:w-1/2 space-y-3 sm:space-y-4"
+                      className="w-full md:w-1/2 space-y-3 sm:space-y-4 relative z-10"
                     >
                       <Link to={`/services/${serviceSlug}`} className="block group/title">
                         <h3 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight group-hover/title:text-[#00A1E4] transition-colors">
@@ -204,7 +224,7 @@ function Services() {
 
                       <Link
                         to={`/services/${serviceSlug}`}
-                        className="inline-flex items-center gap-2 mt-4 sm:mt-5 md:mt-6 text-[#00A1E4] font-semibold hover:underline"
+                        className="inline-flex items-center gap-2 mt-4 sm:mt-5 md:mt-6 text-[#00A1E4] font-semibold hover:underline cursor-pointer relative z-20"
                       >
                         View Full Details →
                       </Link>
@@ -226,7 +246,18 @@ function Services() {
       </section>
 
       {/* ================= PRICING PREVIEW (LIGHT THEME) ================= */}
-      <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-[#E0F7FF] via-[#C3F0FF] to-[#A0E4FF] text-gray-900 overflow-hidden">
+      <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 text-gray-900 overflow-hidden">
+        {/* Background Image - Fixed */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{
+            backgroundImage: "url('https://res.cloudinary.com/diqyc0vvg/image/upload/v1772878894/1192_fqf93i.webp')",
+          }}
+          role="img"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#E0F7FF]/90 via-[#ffff]/95 to-[#A0E4FF]/60"></div>
+
         {/* Soft background glow */}
         <div className="absolute top-0 left-1/4 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 bg-[#3EC4ED]/10 blur-[80px] sm:blur-[100px] md:blur-[120px] lg:blur-[140px] rounded-full animate-pulse"></div>
         <div className="absolute bottom-0 right-1/4 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 bg-[#3EC4ED]/10 blur-[80px] sm:blur-[100px] md:blur-[120px] lg:blur-[140px] rounded-full animate-pulse"></div>
@@ -325,73 +356,69 @@ function Services() {
 
           {/* Branches Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7 lg:gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                name: 'Chennai - Head Office',
-                address: 'T. Nagar, Chennai - 600017',
-                image: '/image/location.webp',
-              },
-              {
-                name: 'Velachery',
-                address: 'Velachery Main Road',
-                image: '/image/location.webp',
-              },
-              {
-                name: 'Anna Nagar',
-                address: '2nd Avenue, Anna Nagar',
-                image: '/image/location.webp',
-              },
-              {
-                name: 'Tambaram',
-                address: 'GST Road, Tambaram',
-                image: '/image/location.webp',
-              },
-              {
-                name: 'OMR',
-                address: 'Sholinganallur, OMR',
-                image: '/image/location.webp',
-              },
-              {
-                name: 'Porur',
-                address: 'Mount Poonamallee Road',
-                image: '/image/location.webp',
-              },
-            ].map((branch, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                className="group relative bg-white rounded-xl sm:rounded-2xl shadow-md sm:shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-[#00A1E4]/30 overflow-hidden"
-              >
-                {/* Branch Image */}
-                <div className="w-full h-40 sm:h-48 md:h-56 lg:h-64 relative overflow-hidden">
-                  <img
-                    src={branch.image}
-                    alt={branch.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    onError={(e) => {
-                      e.target.src = 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800'
-                    }}
-                  />
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                </div>
+            {branchesData.map((branch, index) => {
+              const whatsappUrl = `https://wa.me/${branch.phone?.replace(/\D/g, '') || '919876543210'}?text=Hi, I need dry cleaning service at ${encodeURIComponent(branch.name)} branch`
+              const mapsUrl = `https://maps.google.com/?q=${encodeURIComponent(branch.address)}`
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  className="group relative bg-white rounded-xl sm:rounded-2xl shadow-md sm:shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-[#00A1E4]/30 overflow-hidden"
+                >
+                  {/* Branch Image */}
+                  <div className="w-full h-40 sm:h-48 md:h-56 lg:h-64 relative overflow-hidden">
+                    <img
+                      src={branch.image}
+                      alt={branch.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => {
+                        e.target.src = 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800'
+                      }}
+                    />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  </div>
 
-                {/* Branch Info */}
-                <div className="p-4 sm:p-5 md:p-6">
-                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-1 sm:mb-1.5 md:mb-2 group-hover:text-[#00A1E4] transition-colors leading-tight">
-                    {branch.name}
-                  </h3>
-                  <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">{branch.address}</p>
-                </div>
+                  {/* Branch Info */}
+                  <div className="p-4 sm:p-5 md:p-6">
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-1 sm:mb-1.5 md:mb-2 group-hover:text-[#00A1E4] transition-colors leading-tight">
+                      {branch.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed mb-1 sm:mb-2">{branch.address}</p>
+                    {branch.hours && <p className="text-xs sm:text-sm text-[#00A1E4] font-medium mb-3 sm:mb-4">{branch.hours}</p>}
 
-                {/* Hover Indicator */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-[#00A1E4] to-[#3EC4ED] rounded-b-xl sm:rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-              </motion.div>
-            ))}
+                    {/* Locate Us & WhatsApp Us */}
+                    <div className="flex flex-wrap gap-2">
+                      <a
+                        href={mapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#00A1E4]/10 text-[#00A1E4] hover:bg-[#00A1E4]/20 text-xs sm:text-sm font-medium transition-colors"
+                      >
+                        <FaMapMarkerAlt className="text-sm" />
+                        Locate Us
+                      </a>
+                      <a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 text-xs sm:text-sm font-medium transition-colors"
+                      >
+                        <FaWhatsapp className="text-sm" />
+                        WhatsApp Us
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Hover Indicator */}
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-[#00A1E4] to-[#3EC4ED] rounded-b-xl sm:rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                </motion.div>
+              )
+            })}
           </div>
 
           {/* CTA Text */}
@@ -413,7 +440,7 @@ function Services() {
       </section>
 
       {/* ================= CTA SECTION ================= */}
-      <CTASection />
+     
     </div>
   )
 }

@@ -54,8 +54,19 @@ function OurJourneySection() {
   return (
     <section
       aria-labelledby="journey-heading"
-      className="relative bg-gradient-to-b from-white to-[#f8fcff] py-20 lg:py-28 overflow-hidden"
+      className="relative py-20 lg:py-28 overflow-hidden"
     >
+      {/* Background Image - Fixed */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        style={{
+          backgroundImage: "url('https://res.cloudinary.com/diqyc0vvg/image/upload/v1772878504/23638_yhtwfj.webp')",
+        }}
+        role="img"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0"></div>
+
       {/* Soft background glow */}
       <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-100 opacity-30 blur-3xl rounded-full"></div>
 

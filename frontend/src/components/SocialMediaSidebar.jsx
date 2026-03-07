@@ -14,7 +14,7 @@ const socialLinks = [
   { icon: FaFacebookF, label: "Facebook", url: "https://facebook.com", color: "#1877F2" },
   { icon: FaInstagram, label: "Instagram", url: "https://instagram.com", color: "#E4405F" },
   { icon: FaTwitter, label: "Twitter", url: "https://twitter.com", color: "#1DA1F2" },
-  { icon: FaWhatsapp, label: "WhatsApp", url: "https://wa.me/919876543210", color: "#25D366" },
+  { icon: FaWhatsapp, label: "WhatsApp", url: "https://wa.me/919952050527", color: "#25D366" },
   { icon: FaLinkedinIn, label: "LinkedIn", url: "https://linkedin.com", color: "#0A66C2" },
 ];
 

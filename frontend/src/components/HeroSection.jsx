@@ -66,7 +66,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <img
           ref={imageRef}
-          src="/image/hhs1.jpg"
+          src="https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876255/557315_result_qpb5ri.webp"
           alt="Dry cleaning and garment care service"
           className="w-full h-full object-cover object-center"
         />
@@ -91,7 +91,7 @@ const HeroSection = () => {
             className="mt-4 sm:mt-5 md:mt-6 text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 max-w-full sm:max-w-lg md:max-w-xl mx-auto sm:mx-0"
           >
             Premium garment care with eco-friendly cleaning,
-            72-hour turnaround, and doorstep pickup & delivery.
+            120-hour turnaround, and doorstep pickup & delivery.
           </p>
 
           <div
@@ -116,13 +116,19 @@ const HeroSection = () => {
           {/* Bottom Info Badges */}
           <div className="mt-8 sm:mt-9 md:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center sm:justify-start">
             <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium shadow-md text-xs sm:text-sm whitespace-nowrap">
-              ✓ 72-Hour Turnaround
+              ✓ 120-Hour Turnaround
             </div>
             <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium shadow-md text-xs sm:text-sm whitespace-nowrap">
               ✓ Free Pickup & Delivery
             </div>
             <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium shadow-md text-xs sm:text-sm whitespace-nowrap">
               ✓ Eco-Friendly Care
+            </div>
+            <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium shadow-md text-xs sm:text-sm whitespace-nowrap">
+              ✓ 8-hrs Express Service
+            </div>
+            <div className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium shadow-md text-xs sm:text-sm whitespace-nowrap">
+              ✓ 1 Day Express Service
             </div>
           </div>
 

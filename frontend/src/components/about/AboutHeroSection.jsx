@@ -3,12 +3,14 @@ import { motion } from "framer-motion";
 function AboutHeroSection() {
   return (
     <section className="relative h-screen min-h-[600px] sm:min-h-[700px] md:min-h-screen text-white flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0">
-        <img
-          src="/image/ahs1.jpg"
-          alt="About BrandBox"
-          className="w-full h-full object-cover object-center"
-        />
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        style={{
+          backgroundImage: "url('https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876255/16337_result_a8tkyo.webp')",
+        }}
+        role="img"
+        aria-label="About BrandBox"
+      >
         <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/30 to-black/30"></div>
         <div className="absolute inset-0 bg-black/40 sm:bg-black/30 md:bg-black/20"></div>
       </div>

@@ -104,7 +104,7 @@ function AboutCTASection() {
         >
           {[
             "Free Pickup & Delivery",
-            "72-Hour Turnaround",
+            "120-Hour Turnaround",
             "100% Quality Guarantee",
           ].map((item, index) => (
             <motion.div

@@ -10,7 +10,7 @@ function QuickStats() {
 
   const stats = [
     { value: 10000, label: "Customers Served", suffix: "+" },
-    { value: 72, label: "Standard Turnaround", suffix: "h" },
+    { value: 120, label: "Standard Turnaround", suffix: "h" },
     { value: 100, label: "Satisfaction Rate", suffix: "%" },
     { value: 5, label: "Average Rating", suffix: "★" },
   ];

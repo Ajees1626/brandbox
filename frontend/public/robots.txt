@@ -1,0 +1,6 @@
+# https://thebrandboxdrycleaners.com/robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://thebrandboxdrycleaners.com/sitemap.xml

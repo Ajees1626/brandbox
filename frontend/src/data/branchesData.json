@@ -1,38 +1,40 @@
 [
   {
-    "name": "Chennai - Head Office",
-    "address": "T. Nagar, Chennai - 600017",
-    "image": "/image/location.webp",
+    "name": "K.K. Nagar",
+    "address": "Plot No. 274, Dr. Lakshmanaswamy Salai, K.K. Nagar (Next to Post Office), Chennai - 600078",
+    "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772879735/location_x3qafb.webp",
     "phone": "+91 98765 43210"
   },
   {
-    "name": "Velachery",
-    "address": "Velachery Main Road",
-    "image": "/image/location.webp",
+    "name": "Ashok Nagar",
+    "address": "9, 1, 7th Ave, Sarvamangala Colony, Kamatchi Puram, Ashok Nagar, Chennai, Tamil Nadu 600083",
+    "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772879449/2023-12-30_mxvjnw.webp",
     "phone": "+91 98765 43211"
   },
   {
-    "name": "Anna Nagar",
-    "address": "2nd Avenue, Anna Nagar",
-    "image": "/image/location.webp",
+    "name": "Saligramam",
+    "address": "1/5, Abbusali St, Logaiah Colony, Saligramam, Chennai, Tamil Nadu 600093",
+    "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772879448/unnamed_eql05x.webp",
     "phone": "+91 98765 43212"
   },
   {
-    "name": "Tambaram",
-    "address": "GST Road, Tambaram",
-    "image": "/image/location.webp",
+    "name": "Nesapakkam",
+    "address": "12, Erikarai St, Periyar Nagar, Annai Sathya Nagar, Nesapakkam, Chennai, Tamil Nadu 600078",
+    "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772879448/2022-06-22_eis0zy.webp",
     "phone": "+91 98765 43213"
   },
   {
-    "name": "OMR",
-    "address": "Sholinganallur, OMR",
+    "name": "Adyar",
+    "address": "7, Teachers Colony, opp. to SBI Bank, Venkata Rathnam Nagar Extension, Teachers Colony, Adyar, Chennai, Tamil Nadu 600020",
     "image": "/image/location.webp",
-    "phone": "+91 98765 43214"
+    "phone": "+91 99520 50527",
+    "hours": "Open · Closes 9 pm"
   },
   {
-    "name": "Porur",
-    "address": "Mount Poonamallee Road",
-    "image": "/image/location.webp",
-    "phone": "+91 98765 43215"
+    "name": "T. Nagar",
+    "address": "Rameswaram St, Postal Colony, T. Nagar, Chennai, Tamil Nadu 600017",
+    "image": "https://res.cloudinary.com/diqyc0vvg/image/upload/v1772879449/2025-10-11_gptats.webp",
+    "phone": "+91 99520 50527",
+    "hours": "Open · Closes 9 pm"
   }
 ]

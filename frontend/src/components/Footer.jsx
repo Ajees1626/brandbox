@@ -1,27 +1,16 @@
 import { Link } from "react-router-dom";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import servicesData from "../data/servicesData.json";
+import { slugify } from "../utils/serviceUtils";
 
 function Footer() {
-  const footerLinks = {
-    services: [
-      { path: "/services", label: "Dry Cleaning" },
-      { path: "/services", label: "Stain Removing" },
-      { path: "/services", label: "Bleaching" },
-      { path: "/services", label: "Roll Polishing" },
-      { path: "/services", label: "Roll Pressing" },
-    ],
-    exclusiveServices: [
-      { path: "/services", label: "Bridal Lehanga" },
-      { path: "/services", label: "Bridal Gowns" },
-      { path: "/services", label: "Bridal Sarees" },
-      { path: "/services", label: "Blazers" },
-    ],
-    company: [
-      { path: "/about", label: "About Us" },
-      { path: "/services", label: "Services" },
-      { path: "/contact", label: "Contact" },
-    ],
-  };
+  const services = servicesData.services.map((s) => ({ path: `/services/${slugify(s.title)}`, label: s.title }));
+  const exclusiveServices = servicesData.exclusiveServices.map((s) => ({ path: `/services/${slugify(s.title)}`, label: s.title }));
+  const company = [
+    { path: "/about", label: "About Us" },
+    { path: "/services", label: "Services" },
+    { path: "/contact", label: "Contact" },
+  ];
 
   return (
     <div className="relative mt-12 sm:mt-16 md:mt-20 lg:mt-24 px-4 sm:px-6 md:px-8 pb-6 sm:pb-8 md:pb-10">
@@ -68,20 +57,16 @@ function Footer() {
         </h1>
 
         {/* Content */}
-        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
 
-          {/* Company Info */}
+          {/* Company Info - Logo & Tagline */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="mb-4 sm:mb-5">
-              <img 
-                src="/image/Logo.png" 
-                alt="The Brand Box Logo" 
-                className="h-14 sm:h-16 md:h-20 lg:h-24 xl:h-28 w-auto"
-              />
+            <div className="mb-3 sm:mb-4">
+              <img src="https://res.cloudinary.com/diqyc0vvg/image/upload/v1772879735/Logo_oh1eom.webp" alt="The Brand Box Logo" className="h-14 sm:h-16 md:h-20 lg:h-20 w-auto" />
+              <p className="text-[#00A1E4] font-semibold text-xs sm:text-sm mt-1 tracking-wider">SINCE 2012</p>
             </div>
-            <p className="text-xs sm:text-sm md:text-base text-gray-700 mb-4 sm:mb-5 md:mb-6 leading-relaxed max-w-md sm:max-w-none">
-              Premium care at your doorstep. Luxury dry cleaning & garment care
-              services designed for modern lifestyles.
+            <p className="text-xs sm:text-sm text-gray-700 leading-snug">
+              Chennai&apos;s trusted premium dry cleaning. 120-hour turnaround, free pickup & delivery.
             </p>
           </div>
 
@@ -91,7 +76,7 @@ function Footer() {
               Services
             </h4>
             <ul className="space-y-2 sm:space-y-2.5 md:space-y-3">
-              {footerLinks.services.map((link) => (
+              {services.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.path}
@@ -110,7 +95,7 @@ function Footer() {
               Exclusive Services
             </h4>
             <ul className="space-y-2 sm:space-y-2.5 md:space-y-3">
-              {footerLinks.exclusiveServices.map((link) => (
+              {exclusiveServices.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.path}
@@ -129,7 +114,7 @@ function Footer() {
               Company
             </h4>
             <ul className="space-y-2 sm:space-y-2.5 md:space-y-3">
-              {footerLinks.company.map((link) => (
+              {company.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.path}
@@ -142,19 +127,23 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
+          {/* Contact Info - extra width for long emails */}
+          <div className="sm:col-span-2 lg:col-span-2 min-w-0">
             <h4 className="text-gray-900 font-semibold mb-4 sm:mb-5 md:mb-6 text-base sm:text-lg md:text-xl">
               Contact Us
             </h4>
             <div className="space-y-2 sm:space-y-2.5 md:space-y-3 text-xs sm:text-sm md:text-base">
               <div className="flex items-center gap-2 sm:gap-3">
                 <FaPhone className="text-[#00A1E4] text-sm sm:text-base md:text-lg flex-shrink-0" />
-                <span className="text-gray-700 break-all">+91 98765 43210</span>
+                <span className="text-gray-700">+91 99520 50527</span>
               </div>
               <div className="flex items-center gap-2 sm:gap-3">
                 <FaEnvelope className="text-[#00A1E4] text-sm sm:text-base md:text-lg flex-shrink-0" />
-                <span className="text-gray-700 break-all">info@brandbox.com</span>
+                <a href="mailto:info@drycleanersbrandbox.com" className="text-gray-700 hover:text-[#00A1E4] min-w-0">info@drycleanersbrandbox.com</a>
+              </div>
+              <div className="flex items-center gap-2 sm:gap-3">
+                <FaEnvelope className="text-[#00A1E4] text-sm sm:text-base md:text-lg flex-shrink-0" />
+                <a href="mailto:drycleanersbrandbox@gmail.com" className="text-gray-700 hover:text-[#00A1E4] min-w-0">drycleanersbrandbox@gmail.com</a>
               </div>
               <div className="flex items-start gap-2 sm:gap-3">
                 <FaMapMarkerAlt className="text-[#00A1E4] text-sm sm:text-base md:text-lg flex-shrink-0 mt-0.5" />
@@ -166,7 +155,7 @@ function Footer() {
 
         {/* Bottom Divider */}
         <div className="relative z-10 border-t border-gray-300/30 mt-8 sm:mt-10 md:mt-12 lg:mt-14 pt-4 sm:pt-5 md:pt-6 text-center text-xs sm:text-sm md:text-base text-gray-700">
-          © {new Date().getFullYear()} The Brand Box Dry Cleaning. All Rights Reserved.
+          © {new Date().getFullYear()} The Brand Box Dry Cleaners. All Rights Reserved. | Developed by <a href="https://pixdotsolutions.com" target="_blank" rel="noopener noreferrer" className="text-[#00A1E4] hover:text-[#3EC4ED] font-medium transition-colors">PIXDOT</a>
         </div>
       </footer>
     </div>

@@ -87,8 +87,8 @@ function ServicesPreview() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-16 sm:py-20 lg:py-24 bg-cover bg-center overflow-hidden"
-      style={{ backgroundImage: "url('/image/h1.jpg')" }}
+      className="relative py-16 sm:py-20 lg:py-24 bg-cover bg-center overflow-hidden bg-fixed"
+      style={{ backgroundImage: "url('https://res.cloudinary.com/diqyc0vvg/image/upload/v1772879734/h1_thdsyc.webp')" }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[#00A1E4]/60 to-black/40"></div>
 
