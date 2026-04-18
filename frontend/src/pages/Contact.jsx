@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
+import { SITE_URL, buildKeywords } from '../utils/seoConfig'
 import branchesData from '../data/branchesData.json'
 
 const WEB3FORMS_ACCESS_KEY = '9f30c11d-6b0e-47cb-8d51-12b1c0263be2'
@@ -65,18 +66,28 @@ function Contact() {
     <div className="overflow-hidden font-sans">
       <SEO
         title="Contact Us"
-        description="Contact The Brand Box for dry cleaning services. Visit our branches in K.K. Nagar, Ashok Nagar, Saligramam, Nesapakkam, Adyar, T. Nagar. Free pickup & delivery."
+        description="Contact The Brand Box — Brand Box dry cleaning Chennai. Phone +91 99520 50527. thebrandboxdrycleaning branches: K.K. Nagar, Adyar, T. Nagar. Free pickup & delivery."
         path="/contact"
+        keywords={buildKeywords('contact Brand Box, dry cleaners phone Chennai')}
         schema={{
           '@context': 'https://schema.org',
           '@type': 'ContactPage',
-          name: 'Contact The Brand Box Dry Cleaners',
-          url: 'https://thebrandboxdrycleaners.com/contact',
+          name: 'Contact The Brand Box — Brand Box Dry Cleaning',
+          url: `${SITE_URL}/contact`,
+          inLanguage: 'en-IN',
           mainEntity: {
             '@type': 'LocalBusiness',
             name: 'The Brand Box Dry Cleaners',
+            alternateName: ['The Brand Box', 'Brand Box dry cleaning', 'thebrandboxdrycleaning'],
+            url: SITE_URL,
             telephone: '+91 99520 50527',
             email: ['info@drycleanersbrandbox.com', 'drycleanersbrandbox@gmail.com'],
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Chennai',
+              addressRegion: 'Tamil Nadu',
+              addressCountry: 'IN',
+            },
           },
         }}
       />

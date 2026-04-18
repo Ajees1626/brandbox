@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FaMapMarkerAlt, FaArrowLeft } from 'react-icons/fa'
 import SEO from '../components/SEO'
+import { SITE_URL, buildKeywords } from '../utils/seoConfig'
 import { getServiceBySlug } from '../utils/serviceUtils'
 import serviceDetailsData from '../data/serviceDetailsData.json'
 import branchesData from '../data/branchesData.json'
@@ -14,6 +15,7 @@ function ServiceDetails() {
   if (!service) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <SEO title="Service Not Found" description="This service page could not be found." path="/services" noIndex />
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Not Found</h1>
           <Link to="/services" className="text-[#00A1E4] hover:underline">
@@ -36,17 +38,28 @@ function ServiceDetails() {
     <div className="overflow-hidden font-sans bg-white">
       <SEO
         title={service.title}
-        description={fullDescription}
+        description={`${fullDescription} Book ${service.title} at The Brand Box — Brand Box dry cleaning Chennai (thebrandboxdrycleaning).`}
         path={`/services/${slug}`}
-        image={typeof service.image === 'string' && service.image.startsWith('http') ? service.image : `https://thebrandboxdrycleaners.com${service.image}`}
+        keywords={buildKeywords(`${service.title}, The Brand Box ${service.title}`)}
+        image={typeof service.image === 'string' && service.image.startsWith('http') ? service.image : `${SITE_URL}${service.image}`}
         schema={{
           '@context': 'https://schema.org',
           '@type': 'Service',
-          name: service.title,
+          name: `${service.title} — The Brand Box`,
           description: fullDescription,
-          provider: { '@type': 'LocalBusiness', name: 'The Brand Box Dry Cleaners' },
-          url: `https://thebrandboxdrycleaners.com/services/${slug}`,
-          image: typeof service.image === 'string' && service.image.startsWith('http') ? service.image : `https://thebrandboxdrycleaners.com${service.image}`,
+          provider: {
+            '@type': 'LocalBusiness',
+            name: 'The Brand Box Dry Cleaners',
+            alternateName: ['The Brand Box', 'Brand Box dry cleaning', 'thebrandboxdrycleaning'],
+            url: SITE_URL,
+          },
+          url: `${SITE_URL}/services/${slug}`,
+          image:
+            typeof service.image === 'string' && service.image.startsWith('http')
+              ? service.image
+              : `${SITE_URL}${service.image}`,
+          areaServed: { '@type': 'City', name: 'Chennai' },
+          inLanguage: 'en-IN',
         }}
       />
       {/* Hero Section */}

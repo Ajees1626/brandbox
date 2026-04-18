@@ -13,6 +13,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion'
  
 import SEO from '../components/SEO'
+import { SITE_URL, buildKeywords } from '../utils/seoConfig'
 import servicesData from '../data/servicesData.json'
 import branchesData from '../data/branchesData.json'
 import { slugify } from '../utils/serviceUtils'
@@ -44,15 +45,25 @@ function Services() {
     <div className="overflow-hidden font-sans">
       <SEO
         title="Our Services"
-        description="Dry cleaning, stain removal, bleaching, roll polishing, bridal care & more. Transparent pricing. Visit our branches in K.K. Nagar, Ashok Nagar, Saligramam, Nesapakkam, Adyar, T. Nagar."
+        description="The Brand Box services — Brand Box dry cleaning: stain removal, bleaching, roll polishing, bridal care, steam press. thebrandboxdrycleaning Chennai. Branches: K.K. Nagar, Adyar, T. Nagar & more."
         path="/services"
+        keywords={buildKeywords('dry cleaning services, bridal dry cleaning, express dry clean')}
         schema={{
           '@context': 'https://schema.org',
           '@type': 'Service',
+          name: 'Dry Cleaning & Garment Care — The Brand Box',
           serviceType: 'Dry Cleaning & Garment Care',
-          provider: { '@type': 'LocalBusiness', name: 'The Brand Box Dry Cleaners' },
+          description:
+            'Brand Box dry cleaning services in Chennai by The Brand Box Dry Cleaners.',
+          provider: {
+            '@type': 'LocalBusiness',
+            name: 'The Brand Box Dry Cleaners',
+            alternateName: ['The Brand Box', 'Brand Box dry cleaning', 'thebrandboxdrycleaning'],
+            url: SITE_URL,
+          },
           areaServed: { '@type': 'City', name: 'Chennai' },
-          url: 'https://thebrandboxdrycleaners.com/services',
+          url: `${SITE_URL}/services`,
+          inLanguage: 'en-IN',
         }}
       />
       {/* ================= HERO SECTION ================= */}
@@ -61,7 +72,7 @@ function Services() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{
-            backgroundImage: "url('https://res.cloudinary.com/diqyc0vvg/image/upload/v1772876255/154793_result_au9xvb.webp')",
+            backgroundImage: "url('https://res.cloudinary.com/diqyc0vvg/image/upload/q_auto/f_auto/v1776486829/154793_result_au9xvb.webp')",
           }}
           role="img"
           aria-label="Our Services"
