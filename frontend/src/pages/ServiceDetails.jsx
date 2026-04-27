@@ -26,19 +26,15 @@ function ServiceDetails() {
     )
   }
 
-  const processImages = details?.processImages || [
-    { src: service.image, label: 'Process' },
-    { src: '/image/2.jpg', label: 'Step 2' },
-    { src: '/image/3.jpg', label: 'Step 3' },
-  ]
   const fullDescription = details?.fullDescription || service.description
+  const seoPlainDescription = fullDescription.replace(/\s+/g, ' ').trim()
   const results = details?.results || service.features
 
   return (
     <div className="overflow-hidden font-sans bg-white">
       <SEO
         title={service.title}
-        description={`${fullDescription} Book ${service.title} at The Brand Box — Brand Box dry cleaning Chennai (thebrandboxdrycleaning).`}
+        description={`${seoPlainDescription} Book ${service.title} at The Brand Box — Brand Box dry cleaning Chennai (thebrandboxdrycleaning).`}
         path={`/services/${slug}`}
         keywords={buildKeywords(`${service.title}, The Brand Box ${service.title}`)}
         image={typeof service.image === 'string' && service.image.startsWith('http') ? service.image : `${SITE_URL}${service.image}`}
@@ -46,7 +42,7 @@ function ServiceDetails() {
           '@context': 'https://schema.org',
           '@type': 'Service',
           name: `${service.title} — The Brand Box`,
-          description: fullDescription,
+          description: seoPlainDescription,
           provider: {
             '@type': 'LocalBusiness',
             name: 'The Brand Box Dry Cleaners',
@@ -107,49 +103,22 @@ function ServiceDetails() {
       <section className="py-8 sm:py-12 md:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            {/* Left: Working process images (small) */}
+            {/* Left: Main service image */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               className="lg:col-span-5 order-2 lg:order-1"
             >
-              <div className="space-y-3 sm:space-y-4">
-                {/* First/main image - slightly larger */}
-                <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-48 sm:h-56 md:h-64 object-cover"
-                    onError={(e) => {
-                      e.target.src = 'https://images.unsplash.com/photo-1604335399105-a0c585fd81a9?w=800'
-                    }}
-                  />
-                </div>
-                {/* Small process images */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
-                  {processImages.map((img, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
-                      className="rounded-lg overflow-hidden shadow-md"
-                    >
-                      <img
-                        src={img.src}
-                        alt={img.label}
-                        className="w-full h-20 sm:h-24 md:h-28 object-cover"
-                        onError={(e) => {
-                          e.target.src = 'https://images.unsplash.com/photo-1604335399105-a0c585fd81a9?w=400'
-                        }}
-                      />
-                      <p className="text-[10px] sm:text-xs text-center py-1 bg-gray-100 text-gray-600 font-medium">
-                        {img.label}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
+              <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-64 sm:h-72 md:h-80 object-cover"
+                  onError={(e) => {
+                    e.target.src = 'https://images.unsplash.com/photo-1604335399105-a0c585fd81a9?w=800'
+                  }}
+                />
               </div>
             </motion.div>
 
@@ -161,7 +130,7 @@ function ServiceDetails() {
               className="lg:col-span-7 order-1 lg:order-2"
             >
               {/* Full description paragraph */}
-              <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed mb-6 sm:mb-8">
+              <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed mb-6 sm:mb-8 whitespace-pre-line">
                 {fullDescription}
               </p>
 
