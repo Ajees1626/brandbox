@@ -10,6 +10,7 @@ function Footer() {
     { path: "/about", label: "About Us" },
     { path: "/services", label: "Services" },
     { path: "/contact", label: "Contact" },
+    { path: "/privacy-policy", label: "Privacy Policy" },
   ];
 
   return (
@@ -155,7 +156,21 @@ function Footer() {
 
         {/* Bottom Divider */}
         <div className="relative z-10 border-t border-gray-300/30 mt-8 sm:mt-10 md:mt-12 lg:mt-14 pt-4 sm:pt-5 md:pt-6 text-center text-xs sm:text-sm md:text-base text-gray-700">
-          © {new Date().getFullYear()} The Brand Box Dry Cleaners. All Rights Reserved. | Developed by <a href="https://pixdotsolutions.com" target="_blank" rel="noopener noreferrer" className="text-[#00A1E4] hover:text-[#3EC4ED] font-medium transition-colors">PIXDOT</a>
+          <p>
+            © {new Date().getFullYear()} The Brand Box Dry Cleaners. All Rights Reserved.
+          </p>
+          <p className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+            <Link to="/privacy-policy" className="text-[#00A1E4] hover:text-[#3EC4ED] font-medium transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="text-gray-400" aria-hidden="true">|</span>
+            <span>
+              Developed by{" "}
+              <a href="https://pixdotsolutions.com" target="_blank" rel="noopener noreferrer" className="text-[#00A1E4] hover:text-[#3EC4ED] font-medium transition-colors">
+                PIXDOT
+              </a>
+            </span>
+          </p>
         </div>
       </footer>
     </div>

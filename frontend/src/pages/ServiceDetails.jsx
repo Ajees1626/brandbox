@@ -28,6 +28,10 @@ function ServiceDetails() {
 
   const fullDescription = details?.fullDescription || service.description
   const seoPlainDescription = fullDescription.replace(/\s+/g, ' ').trim()
+  const descriptionParagraphs = fullDescription
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(Boolean)
   const results = details?.results || service.features
 
   return (
@@ -69,7 +73,7 @@ function ServiceDetails() {
               e.target.src = 'https://images.unsplash.com/photo-1604335399105-a0c585fd81a9?w=800'
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/50" />
+          <div className="absolute inset-0 bg-linear-to-br from-black/50 via-black/40 to-black/50" />
         </div>
 
         <div className="relative h-full flex flex-col justify-end px-4 sm:px-6 md:px-8 lg:px-10 pb-4 sm:pb-6">
@@ -129,10 +133,14 @@ function ServiceDetails() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:col-span-7 order-1 lg:order-2"
             >
-              {/* Full description paragraph */}
-              <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed mb-6 sm:mb-8 whitespace-pre-line">
-                {fullDescription}
-              </p>
+              {/* Full description paragraphs */}
+              <div className="mb-6 sm:mb-8 space-y-4 sm:space-y-5">
+                {descriptionParagraphs.map((paragraph, idx) => (
+                  <p key={idx} className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
 
               {/* Features / Points */}
               <div className="mb-6 sm:mb-8">
@@ -152,7 +160,7 @@ function ServiceDetails() {
               </div>
 
               {/* Results */}
-              <div className="p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#E4F4F9] to-[#C3F0FF] border border-[#00A1E4]/20">
+              <div className="p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-linear-to-br from-[#E4F4F9] to-[#C3F0FF] border border-[#00A1E4]/20">
                 <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">
                   Key Results
                 </h3>
@@ -171,7 +179,7 @@ function ServiceDetails() {
       </section>
 
       {/* All Branches Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-white via-[#E4F4F9] to-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-linear-to-br from-white via-[#E4F4F9] to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -225,7 +233,7 @@ function ServiceDetails() {
           >
             <Link
               to="/services#branches"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#00A1E4] to-[#3EC4ED] text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg"
+              className="inline-flex items-center gap-2 bg-linear-to-r from-[#00A1E4] to-[#3EC4ED] text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg"
             >
               <FaMapMarkerAlt />
               View All Branches
